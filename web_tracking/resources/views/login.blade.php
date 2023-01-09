@@ -27,7 +27,7 @@
             <div class="card bg-light" style="width: 35rem;">
                 <div class="card" style="width: 35rem;">
                 <center>
-                    <div class="container-fluid px-2 px-lg-3" style='padding-left:1000px'>
+                    <div class="container-fluid px-3 px-lg-3" style='padding-left:1000px'>
                         <center>
                             <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Badan Pusat Statistik</h1>
                             <h1 class="fst-italic" style="font-size: 40px; color:#1C256A;">Kabupaten Pasuruan</h1>
