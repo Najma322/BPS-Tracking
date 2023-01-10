@@ -28,7 +28,7 @@ class bps_controller extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()   -> intended('dashboard');
         } else {
-            return redirect('login') -> with('error', 'Akun salah!');
+            return redirect('login') -> with('error', 'Akun tidak sesuai!');
         }
     }
 	
@@ -92,7 +92,7 @@ class bps_controller extends Controller
     public function create(array $data)
     {
       return User::create([
-        'name'      => $data['name'],
+        'nama'      => $data['name'],
         'username'  => $data['username'],
 		'email'  	=> $data['email'],
         'password'  => Hash::make($data['password'])
