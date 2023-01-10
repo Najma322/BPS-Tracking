@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login - SAKERNAS</title>
+    <title>Login - SAKERNAS BPS Kabupaten Pasuruan</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -37,7 +37,6 @@
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
@@ -52,40 +51,46 @@
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li><a class="nav-link scrollto" href="#about">Log Out</a></li>
-
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
-
         </div>
     </header>
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
-
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-5 pt-6 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <center>
                         <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS 2023)</h1>
                     </center>
                     <br>
-                    <form id="contactForm">
+                    <form method="post" action="{{ route('login.custom') }}">
+                        {{ csrf_field() }}
+
+                        @if (\Session::has('error'))
+                            <div class="alert alert-danger alert-block">
+                                <strong>{!! \Session::get('error') !!}</strong>
+                            </div>
+                        @endif
+
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
+                            <div class="col"><input class="form-control" name="username" id="username" type="text" placeholder="Enter username" aria-label="Enter username" required/></div>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="password" type="password" src="" /></div>
+                            <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Enter password" required/></div>
                         </div>
                         <br>
                         <div class="container">
                             <div class="row align-items-start">
                                 <div class="col-4">
-                                    <button type="button" class="btn btn-secondary">Login</button>
+                                    <input type="submit" class="btn btn-secondary" name="login" value="Login">
                                 </div>
                             </div>
                         </div>

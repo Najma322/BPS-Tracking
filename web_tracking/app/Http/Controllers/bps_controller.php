@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\bps_plotting_model;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class bps_controller extends Controller
 {
@@ -23,10 +26,9 @@ class bps_controller extends Controller
    
         $credentials = $request -> only('username', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()   -> intended('dashboard')
-                                -> withSuccess('Signed in');
+            return redirect()   -> intended('dashboard');
         } else {
-            return redirect('login') -> withError('Login details are not valid!');
+            return redirect('login') -> with('error', 'Akun salah!');
         }
     }
 	
