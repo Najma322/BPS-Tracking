@@ -11158,14 +11158,14 @@ video.bg-video {
 
 .masthead:before {
     content: "";
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    /* background-color: rgba(0, 0, 0, 0.85); */
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .masthead .masthead-content {
@@ -11217,7 +11217,7 @@ video.bg-video {
     .masthead .masthead-content {
         padding-top: 0;
         padding-bottom: 0;
-        padding-left: 2rem;
+        padding-left: 5rem;
     }
     .masthead .masthead-content h1,
     .masthead .masthead-content .h1 {

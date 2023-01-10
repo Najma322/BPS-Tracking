@@ -25,8 +25,13 @@
     <div class="masthead">
         <div class="masthead-content text-white">
             <div class="card bg-light" style="width: 35rem;">
+<<<<<<< Updated upstream
                 <div class="card" style="width: 35rem;">
                     <div class="container-fluid px-3 px-lg-3" style='padding-left:1000px'>
+=======
+                <div class="card" style="width: 40rem;">
+                <div class="container-fluid" style="margin:auto;">
+>>>>>>> Stashed changes
                         <center>
                             <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Badan Pusat Statistik</h1>
                             <h1 class="fst-italic" style="font-size: 40px; color:#1C256A;">Kabupaten Pasuruan</h1>
@@ -34,6 +39,7 @@
                         <center>
                             <p class="mb-5" style="color: #1C256A;">Survei Angkatan Kerja Nasional</p>
                         </center>
+<<<<<<< Updated upstream
                         
                         <form method="post" action="{{ route('login.custom') }}">
                             {{ csrf_field() }}
@@ -55,6 +61,29 @@
                             <center>
                                 <input type="submit" name="login" value="Login">
                             </center>
+=======
+
+                        <form id="contactForm">
+                            <!-- Email address input-->
+                            <div class="row input-group-newsletter">
+                                <div class="col"><input class="form-control" id="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
+                            </div>
+                            <br>
+                            <div class="row input-group-newsletter">
+                                <div class="col"><input class="form-control" id="password" type="password" src="" /></div>
+                            </div>
+                            <br>
+                            <div class="container">
+                            <div class="row align-items-start">
+                                <div class="col-4">
+                                <button type="button" class="btn btn-secondary">Login</button>
+                                </div>
+                                <div class="col-8">
+                                <li class="breadcrumb-item"><a href="/register">Didn't have any account? Create account</a></li>
+                                </div>
+                            </div>
+                            </div>
+>>>>>>> Stashed changes
                         </form>
                     </div>
                 </div>

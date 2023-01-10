@@ -15,6 +15,7 @@ use App\Http\Controllers\bps_controller;
 */
 // Landing Login
 Route::get('login', [bps_controller::class, 'login']);
+<<<<<<< Updated upstream
 Route::post('custom-login', [bps_controller::class, 'customLogin'])->name('login.custom');
 
 // Landing Registration
@@ -30,3 +31,7 @@ Route::get('dashboard', [bps_controller::class, 'dashboard']);
 Route::get('super', [bps_controller::class, 'superPage']);
 Route::get('petlap', [bps_controller::class, 'petlapPage']);
 Route::get('mimin', [bps_controller::class, 'miminPage']);
+=======
+// Landing Register
+Route::get('register', [bps_controller::class, 'register']);
+>>>>>>> Stashed changes
