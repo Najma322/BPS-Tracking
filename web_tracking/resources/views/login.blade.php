@@ -87,7 +87,7 @@
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Enter password" required/></div>
                         </div>
-                        <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+                        <input type="checkbox" value="lsRememberMe" id="rememberMe" name="remember" value="1"> <label for="rememberMe">Remember me</label>
                         <br>
                         <br>
                         <input type="submit" class="btn btn-secondary" name="login" value="Login">

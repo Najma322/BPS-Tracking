@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\bps_plotting_model;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,9 @@ class bps_controller extends Controller
    
         $credentials = $request -> only('username', 'password');
         if (Auth::attempt($credentials)) {
+			$user = Auth::getProvider()->retrieveByCredentials($credentials);
+			Auth::login($user, $request->get('remember'));
+			
             return redirect()   -> intended('dashboard');
         } else {
             return redirect('login') -> with('error', 'Akun tidak sesuai!');
@@ -81,6 +85,7 @@ class bps_controller extends Controller
             'username'  => 'required|string|unique:users',
 			'email'     => 'required|email',
             'password'  => 'required|min:3',
+			'petugas'	=> 'required'
         ]);
            
         $data = $request->all();
@@ -92,10 +97,11 @@ class bps_controller extends Controller
     public function create(array $data)
     {
       return User::create([
-        'nama'      => $data['name'],
-        'username'  => $data['username'],
-		'email'  	=> $data['email'],
-        'password'  => Hash::make($data['password'])
+        'nama'      	=> $data['name'],
+        'username'  	=> $data['username'],
+		'email'  		=> $data['email'],
+		'id_role_fk'	=> $data['petugas'],
+        'password'  	=> Hash::make($data['password'])
       ]);
     }
     // ========================================================================================== REGISTRATION SYSTEM
