@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id_user');
             $table->string('username')->unique();
             $table->timestamp('username_verified_at')->nullable();
+			$table->string('email')->unique();
             $table->string('password');
 			$table->string('nama');
 			$table->unsignedInteger('id_role_fk');
