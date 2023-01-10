@@ -9,6 +9,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class bps_controller extends Controller
 {
@@ -38,11 +39,9 @@ class bps_controller extends Controller
 	
 	public function dashboard()
     {
-        $member_list = starbucks_membership_model::paginate(5);
-
         // Username pattern per role
-        $pattern_super	= "/man/";
-        $pattern_petlap	= "/kas/";
+        $pattern_super	= "/sup/";
+        $pattern_petlap	= "/lap/";
 		$pattern_mimin	= "/min/";
 
         $user_creds = Auth::user();
@@ -130,19 +129,11 @@ class bps_controller extends Controller
     {
 		$user_creds = Auth::user();
 		if (!is_null($user_creds)){
-			$user_username 	= $user_creds['name'];
-			$user_id		= $user_creds['id'];
+			$user_name	= $user_creds['nama'];
+			$user_id	= $user_creds['id'];
 		}
-
-        $data_toko = DB::table('toko') -> get();
-        $data_karyawan = DB::table('data_karyawan') -> get();
-        $data_produk = DB::table('produk') -> get();
-        $total_penjualan = DB::table('detail_pemesanan')
-                            ->select('kode_produk_fk', DB::raw('SUM(jumlah_pembelian) as total_pembelian'))
-                            ->groupByRaw('kode_produk_fk')
-                            ->get();
 		
-        return view('petlap', compact('user_username', 'user_id', 'data_toko', 'data_karyawan', 'data_produk', 'total_penjualan'));
+        return view('petlap', compact('user_name'));
     }
 	
 	public function miminPage()
@@ -187,10 +178,10 @@ class bps_controller extends Controller
     // ============================================================================================= EMPLOYEES PAGE
 
     // ============================================================================================= VIEW ALYA
-    public function petlap()
+    /* public function petlap()
     {
 		return view('petlap');
-    }
+    } */
     
 
 }

@@ -29,5 +29,5 @@ Route::get('dashboard', [bps_controller::class, 'dashboard']);
 
 // Employees Page
 Route::get('super', [bps_controller::class, 'super']);
-Route::get('petlap', [bps_controller::class, 'petlap']);
+Route::get('petlap', [bps_controller::class, 'petlapPage']);
 Route::get('mimin', [bps_controller::class, 'mimin']);

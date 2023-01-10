@@ -41,6 +41,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
+            <p>{{ $user_name }}</p>
             <div class="logo">
                 <img class="img-fluid" src="./bps_resources/img/BPS.jpg" alt="logo" style="width: 90px; height: 60px;" />
                 <a class="navbar-brand" href="index_manager.html" style="font-size: 25px;"><b>Badan Pusat Statistik</b></a>
@@ -51,7 +52,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Log Out</a></li>
+                    <li><a class="nav-link scrollto" href="signout">Log Out</a></li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
