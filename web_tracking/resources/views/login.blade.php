@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Coming Soon - Start Bootstrap Theme</title>
+    <title>Login - SAKERNAS BPS Kabupaten Pasuruan</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -26,59 +26,39 @@
         <div class="masthead-content text-white">
             <div class="card bg-light" style="width: 35rem;">
                 <div class="card" style="width: 35rem;">
-                <center>
                     <div class="container-fluid px-3 px-lg-3" style='padding-left:1000px'>
                         <center>
                             <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Badan Pusat Statistik</h1>
                             <h1 class="fst-italic" style="font-size: 40px; color:#1C256A;">Kabupaten Pasuruan</h1>
                         </center>
-                        <p class="mb-5" style="color: #1C256A;">Survei Angkatan Kerja Nasional</p>
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Email address input-->
+                        <center>
+                            <p class="mb-5" style="color: #1C256A;">Survei Angkatan Kerja Nasional</p>
+                        </center>
+                        
+                        <form method="post" action="{{ route('login.custom') }}">
+                            {{ csrf_field() }}
+                            <!-- username input-->
                             <div class="row input-group-newsletter">
-                                <div class="col"><input class="form-control" id="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-
+                                <div class="col"><input class="form-control" name="username" type="text" placeholder="Enter your username" required/></div>
+                                @if ($errors->has('username'))
+                                    <span class="text-danger">{{ $errors->first('username') }}</span>
+                                @endif
                             </div>
                             <br>
                             <div class="row input-group-newsletter">
-                                <div class="col"><input class="form-control" id="password" type="password" src="" /></div>
-
+                                <div class="col"><input class="form-control" name="password" type="password" src="" placeholder="Enter your password" required/></div>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
                             </div>
                             <br>
-                            <button type="button" class="btn btn-secondary">Login</button>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="email:email">Email is not valid.</div>
+                            <center>
+                                <input type="submit" name="login" value="Login">
+                            </center>
+                        </form>
                     </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center mb-3 mt-2">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger mb-3 mt-2">Error sending message!</div>
-                    </div>
-                    </form>
                 </div>
             </div>
-                            </center>
         </div>
         <!-- Social Icons-->
         <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
