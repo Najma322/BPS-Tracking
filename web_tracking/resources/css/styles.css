@@ -11151,7 +11151,7 @@ video.bg-video {
     position: relative;
     overflow: hidden;
     z-index: 2;
-    /* display: flex; */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -11217,7 +11217,7 @@ video.bg-video {
     .masthead .masthead-content {
         padding-top: 0;
         padding-bottom: 0;
-        padding-left: 5rem;
+        padding-left: 20rem;
     }
     .masthead .masthead-content h1,
     .masthead .masthead-content .h1 {

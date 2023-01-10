@@ -64,7 +64,6 @@ class bps_controller extends Controller
         return Redirect('login');
     }
 	// ================================================================================================== LOGIN SYSTEM
-<<<<<<< Updated upstream
 	
 	// REGISTRATION SYSTEM ===========================================================================================
     public function registration()
@@ -144,13 +143,11 @@ class bps_controller extends Controller
         return redirect('catalog')->with('success', 'Data member telah berhasil diinput');
     }
     // =============================================================================================MANAGER
-=======
     public function register()
     {
         return view('register');
     }
 
 
->>>>>>> Stashed changes
 }
 
