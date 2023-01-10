@@ -102,17 +102,12 @@
                                         <button type="button" class="btn btn-info">Foto</button>
                                         </td>
                                         <td>
-                                        <div class="dropdown">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Status
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">(1) Berhasil</a></li>
-                                            <li><a class="dropdown-item" href="#">(2) Menolak</a></li>
-                                            <li><a class="dropdown-item" href="#">(3) Tidak dapat ditemui</a></li>
-                                            <li><a class="dropdown-item" href="#">(0) Belum selesai</a></li>
-                                        </ul>
-                                        </div>
+                                        <select name="status" id="status" style="font-size: 13pt;">
+                                        <option value="berhasil" style="font-size: 12pt;">1. Berhasil</option>
+                                        <option value="menolak" style="font-size: 12pt;">2. Menolak</option>
+                                        <option value="tidakdapatditemui" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                        <option value="belumselesai" style="font-size: 12pt;">0. Belum selesai</option>
+                                        </select>
                                         </td>
                                         </tr>
                                     </tbody>
