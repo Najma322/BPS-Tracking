@@ -177,5 +177,13 @@ class bps_controller extends Controller
         return redirect('miminPage')->with('success', 'Plotting telah berhasil ditambahkan');
     }
     // ============================================================================================= EMPLOYEES PAGE
+
+    // ============================================================================================= VIEW ALYA
+    public function petlap()
+    {
+		return view('petlap');
+    }
+    
+
 }
 
