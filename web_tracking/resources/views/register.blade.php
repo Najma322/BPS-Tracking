@@ -64,12 +64,12 @@
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
-
         <div class="container">
+            <br>
             <div class="row">
                 <div class="col-lg-5 pt-6 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <center>
-                        <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS 2023)</h1>
+                        <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS) 2023</h1>
                     </center>
                     <br>
                     <form method='post' action="{{ route('register.custom') }}">
@@ -89,6 +89,19 @@
                         <br>
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Password"/></div>
+                        </div>
+                        <br>
+                        <p>Petugas</p>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Lapangan</label>
+                        </div>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Supervisor
+                        </label>
                         </div>
                         <br>
                         <div class="container">
