@@ -78,7 +78,7 @@
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
                                     <div style="overflow-x:auto;">
-                                    <table class="table display" id="forPetlap" style='font-size:20px;position:center;'>
+                                    <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                     <thead>
                                         <tr>
                                         <th> </th>
@@ -90,15 +90,30 @@
                                         <th>Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody >
                                         <tr>
-                                        <td><p style="font-size: 15p;">1</p></td>
-                                        <td>35</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><p style="font-size: 13pt;">1</p></td>
+                                        <td><p style="font-size: 13pt;">35</p></td>
+                                        <td><p style="font-size: 13pt;">14</p></td>
+                                        <td><p style="font-size: 13pt;">10023</p></td>
+                                        <td><p style="font-size: 13pt;">1</p></td>
+                                        <td>
+                                        <button type="button" class="btn btn-warning">Upload</button>
+                                        <button type="button" class="btn btn-info">Foto</button>
+                                        </td>
+                                        <td>
+                                        <div class="dropdown">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Status
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">(1) Berhasil</a></li>
+                                            <li><a class="dropdown-item" href="#">(2) Menolak</a></li>
+                                            <li><a class="dropdown-item" href="#">(3) Tidak dapat ditemui</a></li>
+                                            <li><a class="dropdown-item" href="#">(0) Belum selesai</a></li>
+                                        </ul>
+                                        </div>
+                                        </td>
                                         </tr>
                                     </tbody>
                                     </table>
