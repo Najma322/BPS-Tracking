@@ -35,6 +35,7 @@ class bps_controller extends Controller
         // Username pattern per role
         $pattern_super	= "/man/";
         $pattern_petlap	= "/kas/";
+		$pattern_mimin	= "/min/";
 
         $user_creds = Auth::user();
 		if (!is_null($user_creds)){
@@ -47,6 +48,8 @@ class bps_controller extends Controller
                 return redirect('super');
             } elseif (preg_match($pattern_petlap, $user_username)) {
                 return redirect('petlap');
+			} elseif (preg_match($pattern_mimin, $user_username)) {
+                return redirect('mimin');
             } else {
                 return redirect("login")->withSuccess('You are not allowed to access');
             }

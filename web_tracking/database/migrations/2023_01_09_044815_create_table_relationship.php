@@ -29,5 +29,12 @@ return new class extends Migration
 		Schema::table('users', function (Blueprint $table) {
             $table->foreign('id_role_fk')->references('id_role')->on('roles');
         });
+		
+		Schema::table('plotting', function (Blueprint $table) {
+            $table->foreign('id_user_fk')->references('id_user')->on('users');
+			$table->foreign('id_provinsi_fk')->references('id_provinsi')->on('provinsi');
+			$table->foreign('id_kabupaten_fk')->references('id_kabupaten')->on('kabupaten');
+			$table->foreign('id_nks_fk')->references('id_nks')->on('nks');
+        });
     }
 };
