@@ -92,7 +92,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <td><p style="font-size: 15p;position:center">1</p></td>
+                                        <td><p style="font-size: 15p;">1</p></td>
                                         <td>35</td>
                                         <td></td>
                                         <td></td>

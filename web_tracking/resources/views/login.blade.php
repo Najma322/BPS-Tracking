@@ -86,14 +86,10 @@
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Enter password" required/></div>
                         </div>
+                        <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
                         <br>
-                        <div class="container">
-                            <div class="row align-items-start">
-                                <div class="col-4">
-                                    <input type="submit" class="btn btn-secondary" name="login" value="Login">
-                                </div>
-                            </div>
-                        </div>
+                        <br>
+                        <input type="submit" class="btn btn-secondary" name="login" value="Login">
                     </form>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
