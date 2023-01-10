@@ -75,7 +75,15 @@
                     <form id="contactForm">
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
+                            <div class="col"><input class="form-control" id="text" type="text" placeholder="Name" aria-label="Name"/></div>
+                        </div>
+                        <br>
+                        <div class="row input-group-newsletter">
+                            <div class="col"><input class="form-control" id="username" type="username" placeholder="Username" aria-label="Username"/></div>
+                        </div>
+                        <br>
+                        <div class="row input-group-newsletter">
+                            <div class="col"><input class="form-control" id="email" type="email" placeholder="Email" aria-label="Email" data-sb-validations="required,email" /></div>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
@@ -85,7 +93,7 @@
                         <div class="container">
                             <div class="row align-items-start">
                                 <div class="col-4">
-                                    <button type="button" class="btn btn-secondary">Login</button>
+                                    <button type="button" class="btn btn-secondary">Sign Up</button>
                                 </div>
                             </div>
                         </div>
