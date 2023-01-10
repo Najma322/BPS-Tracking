@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login - SAKERNAS</title>
+    <title>Register - SAKERNAS BPS Kabupaten Pasuruan</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -72,28 +72,29 @@
                         <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS 2023)</h1>
                     </center>
                     <br>
-                    <form id="contactForm">
+                    <form method='post' action="{{ route('register.custom') }}">
+                        {{ csrf_field() }}
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="text" type="text" placeholder="Name" aria-label="Name"/></div>
+                            <div class="col"><input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap"/></div>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="username" type="username" placeholder="Username" aria-label="Username"/></div>
+                            <div class="col"><input class="form-control" name="username" id="username" type="username" placeholder="Username"/></div>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="email" type="email" placeholder="Email" aria-label="Email" data-sb-validations="required,email" /></div>
+                            <div class="col"><input class="form-control" name="email" id="email" type="email" placeholder="Email"/></div>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="password" type="password" src="" /></div>
+                            <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Password"/></div>
                         </div>
                         <br>
                         <div class="container">
                             <div class="row align-items-start">
                                 <div class="col-4">
-                                    <button type="button" class="btn btn-secondary">Sign Up</button>
+                                    <input type="submit" name="register" class="btn btn-secondary" value="Sign Up" />
                                 </div>
                             </div>
                         </div>

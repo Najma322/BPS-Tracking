@@ -78,11 +78,12 @@
                             </div>
                         @endif
 
-                        <!-- Email address input-->
+                        <!-- username input-->
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" name="username" id="username" type="text" placeholder="Enter username" aria-label="Enter username" required/></div>
                         </div>
                         <br>
+                        <!-- password input-->
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Enter password" required/></div>
                         </div>
