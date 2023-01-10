@@ -27,6 +27,7 @@ Route::get('signout', [bps_controller::class, 'signOut']);
 // Landing Employee
 Route::get('dashboard', [bps_controller::class, 'dashboard']);
 
+// Employees Page
 Route::get('super', [bps_controller::class, 'superPage']);
 Route::get('petlap', [bps_controller::class, 'petlapPage']);
 Route::get('mimin', [bps_controller::class, 'miminPage']);
