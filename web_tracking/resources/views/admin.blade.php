@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Petlap - SAKERNAS BPS Kabupaten Pasuruan</title>
+    <title>Login - SAKERNAS</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -51,8 +51,8 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="loginas">Log out</a></li>
-                    <li><a class="nav-link scrollto" href="signout">Logged in  as: {{ $user_name }}</a></li>
+                    <li><a class="nav-link scrollto" href="signout">Log Out</a></li>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -86,8 +86,8 @@
                                         <th>Kabupaten</th>
                                         <th>NKS</th>
                                         <th>Ruta</th>
-                                        <th>Gambar</th>
-                                        <th>Status</th>
+                                        <th>ID Petugas Lapangan</th>
+                                        <th>ID Supervisor</th>
                                         </tr>
                                     </thead>
                                     <tbody >
@@ -96,18 +96,14 @@
                                         <td><p style="font-size: 13pt;">35</p></td>
                                         <td><p style="font-size: 13pt;">14</p></td>
                                         <td><p style="font-size: 13pt;">10023</p></td>
-                                        <td><p style="font-size: 13pt;">1</p></td>
                                         <td>
-                                        <button type="button" class="btn btn-warning">Upload</button>
-                                        <button type="button" class="btn btn-info">Foto</button>
+                                        <input type="number" class="form-control" id="Ruta" placeholder="Range Ruta">
                                         </td>
                                         <td>
-                                        <select name="status" id="status" style="font-size: 13pt;">
-                                        <option value="berhasil" style="font-size: 12pt;">1. Berhasil</option>
-                                        <option value="menolak" style="font-size: 12pt;">2. Menolak</option>
-                                        <option value="tidakdapatditemui" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
-                                        <option value="belumselesai" style="font-size: 12pt;">0. Belum selesai</option>
-                                        </select>
+                                        <input type="number" class="form-control" id="IDPetlap" placeholder="ID Petlap">
+                                        </td>
+                                        <td>
+                                        <input type="number" class="form-control" id="IDSup" placeholder="ID Supervisor">
                                         </td>
                                         </tr>
                                     </tbody>

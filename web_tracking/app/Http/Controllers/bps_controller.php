@@ -185,7 +185,15 @@ class bps_controller extends Controller
     {
 		return view('petlap');
     } */
-
-
+    
+    public function admin()
+    {
+		return view('admin');
+    }
+     
+    public function supervisor()
+    {
+		return view('supervisor');
+    }
 }
 
