@@ -18,25 +18,25 @@ class bps_controller extends Controller
     {
 		return view('login');
     }
-    
+
     public function customLogin(Request $request)
     {
 		$request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
-   
+
         $credentials = $request -> only('username', 'password');
         if (Auth::attempt($credentials)) {
 			$user = Auth::getProvider()->retrieveByCredentials($credentials);
 			Auth::login($user, $request->get('remember'));
-			
+
             return redirect()   -> intended('dashboard');
         } else {
             return redirect('login') -> with('error', 'Akun tidak sesuai!');
         }
     }
-	
+
 	public function dashboard()
     {
         // Username pattern per role
@@ -44,21 +44,24 @@ class bps_controller extends Controller
         $pattern_petlap	= "/lap/";
 		$pattern_mimin	= "/min/";
 
+        // Check for role
         $user_creds = Auth::user();
 		if (!is_null($user_creds)){
-			$user_username = $user_creds['username'];
+			$user_role= $user_creds['id_role_fk'];
 		}
 
         if(Auth::check()){
-            if (preg_match($pattern_super, $user_username)) {
-                // return view('starbucks.member_list', compact('member_list'))->with('i', (request()->input('page', 1) - 1) * 5);
+            // Supervisor
+            if ($user_role == 2) {
                 return redirect('super');
-            } elseif (preg_match($pattern_petlap, $user_username)) {
+            // Petugas lapangan
+            } elseif ($user_role == 1) {
                 return redirect('petlap');
-			} elseif (preg_match($pattern_mimin, $user_username)) {
+            // Super admin
+			} elseif ($user_role == 3) {
                 return redirect('mimin');
             } else {
-                return redirect("login")->withSuccess('You are not allowed to access');
+                return redirect("login")->with('error', 'Kredensial error');
             }
         }
     }
@@ -66,31 +69,31 @@ class bps_controller extends Controller
     public function signOut() {
         Session::flush();
         Auth::logout();
-  
+
         return Redirect('login');
     }
 	// ================================================================================================== LOGIN SYSTEM
-	
+
 	// REGISTRATION SYSTEM ===========================================================================================
     public function registration()
     {
         return view('register');
     }
-      
+
     public function customRegistration(Request $request)
-    {  
+    {
         $request->validate([
             'name'      => 'required|string',
             'username'  => 'required|string|unique:users',
 			'email'     => 'required|email',
-            'password'  => 'required|min:3',
+            'password'  => 'required|confirmed|min:6',
 			'petugas'	=> 'required'
         ]);
-           
+
         $data = $request->all();
         $check = $this->create($data);
-         
-        return redirect("login")->withSuccess('You have signed up successfully!');
+
+        return redirect("login")->with('success', 'Akun berhasil didaftarkan');
     }
 
     public function create(array $data)
@@ -104,7 +107,7 @@ class bps_controller extends Controller
       ]);
     }
     // ========================================================================================== REGISTRATION SYSTEM
-	
+
 	// EMPLOYEES PAGE ============================================================================================
     public function superPage()
     {
@@ -121,10 +124,10 @@ class bps_controller extends Controller
                             ->select('kode_produk_fk', DB::raw('SUM(jumlah_pembelian) as total_pembelian'))
                             ->groupByRaw('kode_produk_fk')
                             ->get();
-		
+
         return view('super', compact('user_username', 'user_id', 'data_toko', 'data_karyawan', 'data_produk', 'total_penjualan'));
     }
-	
+
 	public function petlapPage()
     {
 		$user_creds = Auth::user();
@@ -132,10 +135,10 @@ class bps_controller extends Controller
 			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
 		}
-		
+
         return view('petlap', compact('user_name'));
     }
-	
+
 	public function miminPage()
     {
 		$user_creds = Auth::user();
@@ -151,7 +154,7 @@ class bps_controller extends Controller
                             ->select('kode_produk_fk', DB::raw('SUM(jumlah_pembelian) as total_pembelian'))
                             ->groupByRaw('kode_produk_fk')
                             ->get();
-		
+
         return view('mimin', compact('user_username', 'user_id', 'data_toko', 'data_karyawan', 'data_produk', 'total_penjualan'));
     }
 

@@ -88,8 +88,17 @@
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Password" required/></div>
+                            <div class="col"><input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password"/></div>
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+                        <br>
+                        <div class="row input-group-newsletter">
+                            <div class="col"><input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Konfirmasi password"/></div>
                         <br>
                         <p>Petugas</p>
                         <div class="form-check">
