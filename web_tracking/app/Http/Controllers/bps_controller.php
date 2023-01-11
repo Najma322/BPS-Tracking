@@ -187,5 +187,10 @@ class bps_controller extends Controller
     {
 		return view('admin');
     }
+     
+    public function supervisor()
+    {
+		return view('supervisor');
+    }
 }
 

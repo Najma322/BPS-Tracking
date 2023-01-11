@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Petlap - SAKERNAS BPS Kabupaten Pasuruan</title>
+    <title>Supervisor - SAKERNAS BPS Kabupaten Pasuruan</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -52,7 +52,7 @@
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li><a class="nav-link scrollto" href="loginas">Log out</a></li>
-                    <li><a class="nav-link scrollto" href="signout">Logged in  as: {{ $user_name }}</a></li>
+                    <li><a class="nav-link scrollto" href="signout">Logged in  as: Bebeb</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -61,16 +61,28 @@
         </div>
     </header>
     <!-- End Header -->
-
     <!-- ======= Form Section ======= -->
     <section id="form" class="d-flex align-items-center">
-
         <div class="container">
             <div class="row">
             <div class="col-lg-12">
                     <div class="row">
                         <!-- First Card -->
                         <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
+                        <center>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Petugas Lapangan
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Yunus</a></li>
+                                <li><a class="dropdown-item" href="#">Ainul</a></li>
+                                <li><a class="dropdown-item" href="#">Hadi Pur</a></li>
+                                <li><a class="dropdown-item" href="#">Aab</a></li>
+                            </ul>
+                            </div>
+                            </center>
+                            <br>
                             <div class="card info-card customers-card">
                                 <div class="card-body">
                                     <!-- ========================= Isi Card ========================= -->
@@ -79,27 +91,29 @@
                                     </center>
                                     <div style="overflow-x:auto;">
                                     <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                    <thead>
+                                    <thead align=center>
                                         <tr>
                                         <th> </th>
                                         <th>Provinsi</th>
                                         <th>Kabupaten</th>
                                         <th>NKS</th>
                                         <th>Ruta</th>
-                                        <th>Gambar</th>
                                         <th>Status</th>
+                                        <th>Gambar</th>
                                         </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody align=center>
                                         <tr>
-                                        <td><p style="font-size: 13pt;">1</p></td>
+                                        <td><p style=center"font-size: 13pt;">1</p></td>
                                         <td><p style="font-size: 13pt;">35</p></td>
                                         <td><p style="font-size: 13pt;">14</p></td>
                                         <td><p style="font-size: 13pt;">10023</p></td>
                                         <td><p style="font-size: 13pt;">1</p></td>
                                         <td>
-                                        <button type="button" class="btn btn-warning">Upload</button>
-                                        <button type="button" class="btn btn-info">Foto</button>
+                                        <button type="button" class="btn btn-success">1. Berhasil</button>
+                                        <button type="button" class="btn btn-danger">2. Menolak</button>
+                                        <button type="button" class="btn btn-warning">3. Tidak Dapat Ditemui</button>
+                                        <button type="button" class="btn btn-info">0. Belum Selesai</button>
                                         </td>
                                         <td>
                                         <select name="status" id="status" style="font-size: 13pt;">

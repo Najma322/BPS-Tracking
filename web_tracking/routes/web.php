@@ -28,6 +28,6 @@ Route::get('signout', [bps_controller::class, 'signOut']);
 Route::get('dashboard', [bps_controller::class, 'dashboard']);
 
 // Employees Page
-Route::get('super', [bps_controller::class, 'super']);
+Route::get('supervisor', [bps_controller::class, 'supervisor']);
 Route::get('petlap', [bps_controller::class, 'petlapPage']);
 Route::get('admin', [bps_controller::class, 'admin']);
