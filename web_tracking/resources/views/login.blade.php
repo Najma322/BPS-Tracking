@@ -69,11 +69,18 @@
                         <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS 2023)</h1>
                     </center>
                     <br>
+                    @if (\Session::has('success'))
+                        <div class="alert alert-success">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                            <strong>{!! \Session::get('success') !!}</strong>
+                        </div>
+                    @endif
                     <form method="post" action="{{ route('login.custom') }}">
                         {{ csrf_field() }}
 
                         @if (\Session::has('error'))
-                            <div class="alert alert-danger alert-block">
+                            <div class="alert alert-danger">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
                                 <strong>{!! \Session::get('error') !!}</strong>
                             </div>
                         @endif
