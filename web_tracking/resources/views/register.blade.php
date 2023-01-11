@@ -88,7 +88,7 @@
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Password"/></div>
+                            <div class="col"><input class="form-control" name="password" id="password" type="password" src="" placeholder="Password" required/></div>
                         </div>
                         <br>
                         <p>Petugas</p>
