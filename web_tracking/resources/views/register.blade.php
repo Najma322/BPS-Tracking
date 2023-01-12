@@ -99,6 +99,7 @@
                         <br>
                         <div class="row input-group-newsletter">
                             <div class="col"><input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Konfirmasi password"/></div>
+                        </div>
                         <br>
                         <p>Petugas</p>
                         <div class="form-check">
@@ -120,6 +121,7 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </form>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">

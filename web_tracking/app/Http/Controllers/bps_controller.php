@@ -113,19 +113,11 @@ class bps_controller extends Controller
     {
 		$user_creds = Auth::user();
 		if (!is_null($user_creds)){
-			$user_username 	= $user_creds['name'];
-			$user_id		= $user_creds['id'];
+			$user_name	= $user_creds['nama'];
+			$user_id	= $user_creds['id'];
 		}
 
-        $data_toko = DB::table('toko') -> get();
-        $data_karyawan = DB::table('data_karyawan') -> get();
-        $data_produk = DB::table('produk') -> get();
-        $total_penjualan = DB::table('detail_pemesanan')
-                            ->select('kode_produk_fk', DB::raw('SUM(jumlah_pembelian) as total_pembelian'))
-                            ->groupByRaw('kode_produk_fk')
-                            ->get();
-
-        return view('super', compact('user_username', 'user_id', 'data_toko', 'data_karyawan', 'data_produk', 'total_penjualan'));
+        return view('supervisor', compact('user_name'));
     }
 
 	public function petlapPage()
@@ -143,19 +135,11 @@ class bps_controller extends Controller
     {
 		$user_creds = Auth::user();
 		if (!is_null($user_creds)){
-			$user_username 	= $user_creds['name'];
-			$user_id		= $user_creds['id'];
+			$user_name	= $user_creds['nama'];
+			$user_id	= $user_creds['id'];
 		}
 
-        $data_toko = DB::table('toko') -> get();
-        $data_karyawan = DB::table('data_karyawan') -> get();
-        $data_produk = DB::table('produk') -> get();
-        $total_penjualan = DB::table('detail_pemesanan')
-                            ->select('kode_produk_fk', DB::raw('SUM(jumlah_pembelian) as total_pembelian'))
-                            ->groupByRaw('kode_produk_fk')
-                            ->get();
-
-        return view('mimin', compact('user_username', 'user_id', 'data_toko', 'data_karyawan', 'data_produk', 'total_penjualan'));
+        return view('admin', compact('user_name'));
     }
 
     public function createPlotting(Request $request)
@@ -185,12 +169,12 @@ class bps_controller extends Controller
     {
 		return view('petlap');
     } */
-    
+
     public function admin()
     {
 		return view('admin');
     }
-     
+
     public function supervisor()
     {
 		return view('supervisor');
