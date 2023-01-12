@@ -49,10 +49,11 @@
             </div>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="#form">Plotting</a></li>
+                    <li><a class="nav-link scrollto" href="#monitor">Monitor</a></li>
+                    <li><a class="nav-link scrollto" href="/register">Register</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="signout">Log Out</a></li>
-
+                    <li><a class="nav-link scrollto" href="/login">Log Out</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -61,10 +62,8 @@
         </div>
     </header>
     <!-- End Header -->
-
     <!-- ======= Form Section ======= -->
     <section id="form" class="d-flex align-items-center">
-
         <div class="container">
             <div class="row">
             <div class="col-lg-12">
@@ -118,8 +117,65 @@
         </div>
 
     </section>
-    <!-- End Hero -->
+    <!-- End Form section -->
 
+
+    <!-- =====Form Monitor -->
+    <section id="monitor" class="d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-12">
+                        <div class="row">
+                            <!-- First Card -->
+                            <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
+                                <div class="card info-card customers-card">
+                                    <div class="card-body">
+                                        <!-- ========================= Isi Card ========================= -->
+                                        <center>
+                                        <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
+                                        </center>
+                                        <div style="overflow-x:auto;">
+                                        <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
+                                        <thead>
+                                            <tr>
+                                            <th> </th>
+                                            <th>Provinsi</th>
+                                            <th>Kabupaten</th>
+                                            <th>NKS</th>
+                                            <th>Ruta</th>
+                                            <th>ID Petugas Lapangan</th>
+                                            <th>ID Supervisor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr>
+                                            <td><p style="font-size: 13pt;">1</p></td>
+                                            <td><p style="font-size: 13pt;">35</p></td>
+                                            <td><p style="font-size: 13pt;">14</p></td>
+                                            <td><p style="font-size: 13pt;">10023</p></td>
+                                            <td>
+                                            <input type="number" class="form-control" id="Ruta" placeholder="Range Ruta">
+                                            </td>
+                                            <td>
+                                            <input type="number" class="form-control" id="IDPetlap" placeholder="ID Petlap">
+                                            </td>
+                                            <td>
+                                            <input type="number" class="form-control" id="IDSup" placeholder="ID Supervisor">
+                                            </td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </section>
+    <!-- =====End Form  -->
     <main id="main">
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
