@@ -76,19 +76,19 @@
                         {{ csrf_field() }}
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap"/></div>
+                            <input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap"/>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" name="username" id="username" type="username" placeholder="Username"/></div>
+                            <input class="form-control" name="username" id="username" type="username" placeholder="Username"/>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" name="email" id="email" type="email" placeholder="Email"/></div>
+                            <input class="form-control" name="email" id="email" type="email" placeholder="Email"/>
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password"/></div>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password"/>
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -98,7 +98,7 @@
                         </div>
                         <br>
                         <div class="row input-group-newsletter">
-                            <div class="col"><input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Konfirmasi password"/></div>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Konfirmasi password"/>
                         </div>
                         <br>
                         <p>Petugas</p>
@@ -123,6 +123,7 @@
                         </div>
                         <br>
                     </form>
+                    
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
                     <img src="./bps_resources/img/hero-img.png" class="img-fluid animated" alt="">
