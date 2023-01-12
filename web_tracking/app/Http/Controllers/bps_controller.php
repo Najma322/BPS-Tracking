@@ -59,7 +59,7 @@ class bps_controller extends Controller
                 return redirect('petlap');
             // Super admin
 			} elseif ($user_role == 3) {
-                return redirect('mimin');
+                return redirect('admin');
             } else {
                 return redirect("login")->with('error', 'Kredensial error');
             }
@@ -115,7 +115,9 @@ class bps_controller extends Controller
 		if (!is_null($user_creds)){
 			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
-		}
+		} else {
+            return redirect('login') -> with('error', 'Anda belum login');
+        }
 
         return view('supervisor', compact('user_name'));
     }
@@ -126,7 +128,9 @@ class bps_controller extends Controller
 		if (!is_null($user_creds)){
 			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
-		}
+		} else {
+            return redirect('login') -> with('error', 'Anda belum login');
+        }
 
         return view('petlap', compact('user_name'));
     }
@@ -137,7 +141,9 @@ class bps_controller extends Controller
 		if (!is_null($user_creds)){
 			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
-		}
+		} else {
+            return redirect('login') -> with('error', 'Anda belum login');
+        }
 
         return view('admin', compact('user_name'));
     }
