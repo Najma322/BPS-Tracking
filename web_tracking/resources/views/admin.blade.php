@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login - SAKERNAS</title>
+    <title>Admin - SAKERNAS BPS Kabupaten Pasuruan</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -66,7 +66,7 @@
     <section id="form" class="d-flex align-items-center">
         <div class="container">
             <div class="row">
-            <div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="row">
                         <!-- First Card -->
                         <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
@@ -74,39 +74,47 @@
                                 <div class="card-body">
                                     <!-- ========================= Isi Card ========================= -->
                                     <center>
-                                    <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
+                                        <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
                                     <div style="overflow-x:auto;">
-                                    <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                    <thead>
-                                        <tr>
-                                        <th> </th>
-                                        <th>Provinsi</th>
-                                        <th>Kabupaten</th>
-                                        <th>NKS</th>
-                                        <th>Ruta</th>
-                                        <th>ID Petugas Lapangan</th>
-                                        <th>ID Supervisor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody >
-                                        <tr>
-                                        <td><p style="font-size: 13pt;">1</p></td>
-                                        <td><p style="font-size: 13pt;">35</p></td>
-                                        <td><p style="font-size: 13pt;">14</p></td>
-                                        <td><p style="font-size: 13pt;">10023</p></td>
-                                        <td>
-                                        <input type="number" class="form-control" id="Ruta" placeholder="Range Ruta">
-                                        </td>
-                                        <td>
-                                        <input type="number" class="form-control" id="IDPetlap" placeholder="ID Petlap">
-                                        </td>
-                                        <td>
-                                        <input type="number" class="form-control" id="IDSup" placeholder="ID Supervisor">
-                                        </td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
+                                        <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
+                                            <thead align=center>
+                                                <tr>
+                                                    <th> </th>
+                                                    <th>Provinsi</th>
+                                                    <th>Kabupaten</th>
+                                                    <th>NKS</th>
+                                                    <th>Ruta</th>
+                                                    <th>ID Petugas Lapangan</th>
+                                                    <th>ID Supervisor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align=center>
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">1</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">35</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">14</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">10023</p>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="Ruta" placeholder="Range Ruta">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="IDPetlap" placeholder="ID Petlap">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="IDSup" placeholder="ID Supervisor">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -119,53 +127,95 @@
     </section>
     <!-- End Form section -->
 
-
-    <!-- =====Form Monitor -->
-    <section id="monitor" class="d-flex align-items-center">
-            <div class="container">
-                <div class="row">
+    <!-- =====Form Monitor Supervisor -->
+    <section id="monitor_sup" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12">
-                        <div class="row">
-                            <!-- First Card -->
-                            <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
-                                <div class="card info-card customers-card">
-                                    <div class="card-body">
-                                        <!-- ========================= Isi Card ========================= -->
-                                        <center>
-                                        <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
-                                        </center>
-                                        <div style="overflow-x:auto;">
+                    <div class="row">
+                        <!-- First Card -->
+                        <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
+                            <center>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jabatan
+                                </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li onclick="gantiHalamanLap()"><a class="dropdown-item">Petugas Lapangan</a></li>
+                                        <li onclick="gantiHalamanSup()"><a class="dropdown-item">Supervisor</a></li>
+                                    </ul>
+                                </div>
+                            </center>
+                            <br>
+                            <div id="sup" class="card info-card customers-card">
+                                <div class="card-body">
+                                    <!-- ========================= Isi Card ========================= -->
+                                    <center>
+                                        <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Daftar Supervisor SAKERNAS 2023</b></p>
+                                    </center>
+                                    <div style="overflow-x:auto;">
                                         <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                        <thead>
-                                            <tr>
-                                            <th> </th>
-                                            <th>Provinsi</th>
-                                            <th>Kabupaten</th>
-                                            <th>NKS</th>
-                                            <th>Ruta</th>
-                                            <th>ID Petugas Lapangan</th>
-                                            <th>ID Supervisor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody >
-                                            <tr>
-                                            <td><p style="font-size: 13pt;">1</p></td>
-                                            <td><p style="font-size: 13pt;">35</p></td>
-                                            <td><p style="font-size: 13pt;">14</p></td>
-                                            <td><p style="font-size: 13pt;">10023</p></td>
-                                            <td>
-                                            <input type="number" class="form-control" id="Ruta" placeholder="Range Ruta">
-                                            </td>
-                                            <td>
-                                            <input type="number" class="form-control" id="IDPetlap" placeholder="ID Petlap">
-                                            </td>
-                                            <td>
-                                            <input type="number" class="form-control" id="IDSup" placeholder="ID Supervisor">
-                                            </td>
-                                            </tr>
-                                        </tbody>
+                                            <thead align=center>
+                                                <tr>
+                                                    <th>Id </th>
+                                                    <th>Nama</th>
+                                                    <th>Username</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align=center>
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">1</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">Addel Salindeho</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">Addel_01</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">addelsalindeho@gmail.com</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="petlap" class="card info-card customers-card" style="display: none;">
+                                <div class="card-body">
+                                    <!-- ========================= Isi Card ========================= -->
+                                    <center>
+                                        <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Daftar Petugas Lapangan SAKERNAS 2023</b></p>
+                                    </center>
+                                    <div style="overflow-x:auto;">
+                                        <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
+                                            <thead align=center>
+                                                <tr>
+                                                    <th>Id </th>
+                                                    <th>Nama</th>
+                                                    <th>Username</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align=center>
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">1</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">Addel Salindeho</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">Addel_01</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">addelsalindeho@gmail.com</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -173,9 +223,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <!-- =====End monitor supervisor   -->
 
-            </section>
-    <!-- =====End Form  -->
     <main id="main">
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
@@ -296,7 +349,23 @@
 
     <!-- Template Main JS File -->
     <script src="./bps_resources/js/main.js"></script>
+    <script>
+        function gantiHalamanSup() {
+            var x = document.getElementById("petlap");
+            var y = document.getElementById("sup");
 
+            x.style.display = "none";
+            y.style.display = "block";
+        }
+
+        function gantiHalamanLap() {
+            var x = document.getElementById("petlap");
+            var y = document.getElementById("sup");
+
+            x.style.display = "block";
+            y.style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
