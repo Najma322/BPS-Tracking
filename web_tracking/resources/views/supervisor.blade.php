@@ -51,16 +51,16 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="loginas">Log out</a></li>
-                    <li><a class="nav-link scrollto" href="signout">Logged in  as: Bebeb</a></li>
+                    <li><a class="nav-link scrollto" href="signout">Log out</a></li>
+                    <li><a class="nav-link scrollto" href="#">Anda masuk sebagai: {{ $user_name }}</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
-
         </div>
     </header>
     <!-- End Header -->
+
     <!-- ======= Form Section ======= -->
     <section id="form" class="d-flex align-items-center">
         <div class="container">

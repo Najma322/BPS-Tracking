@@ -53,7 +53,7 @@ class bps_controller extends Controller
         if(Auth::check()){
             // Supervisor
             if ($user_role == 2) {
-                return redirect('super');
+                return redirect('supervisor');
             // Petugas lapangan
             } elseif ($user_role == 1) {
                 return redirect('petlap');
@@ -93,7 +93,7 @@ class bps_controller extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("login")->with('success', 'Akun berhasil didaftarkan');
+        return redirect("admin")->with('success', 'Akun berhasil didaftarkan');
     }
 
     public function create(array $data)
@@ -141,11 +141,12 @@ class bps_controller extends Controller
 		if (!is_null($user_creds)){
 			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
+            $user_role  = $user_creds['id_role_fk'];
 		} else {
             return redirect('login') -> with('error', 'Anda belum login');
         }
 
-        return view('admin', compact('user_name'));
+        return view('admin', compact('user_name', 'user_role'));
     }
 
     public function createPlotting(Request $request)

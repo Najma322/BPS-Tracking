@@ -64,6 +64,13 @@
     </section>
     <!-- End Header -->
 
+    @if ($user_role == 3)
+        <h1>THIS IS MIMIN</h1>
+    @elseif ($user_role == 2)
+        <h1>NOT</h1>
+    @elseif ($user_role ==1)
+    @endif
+
     <!-- ======= Form Section ======= -->
     <div class="container" id="cardPlot">
         <div class="row">
@@ -233,25 +240,19 @@
                     <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS) 2023</h1>
                 </center>
                 <br>
-                @if (\Session::has('success'))
-                    <div class="alert alert-success">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
-                        <strong>{!! \Session::get('success') !!}</strong>
-                    </div>
-                @endif
                 <form method='post' action="{{ route('register.custom') }}">
                     {{ csrf_field() }}
                     <!-- Email address input-->
                     <div class="row input-group-newsletter">
-                        <input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap" value="{{ old('name') }}"/>
+                        <input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap"/>
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
-                        <input class="form-control" name="username" id="username" type="username" placeholder="Username" value="{{ old('username') }}"/>
+                        <input class="form-control" name="username" id="username" type="username" placeholder="Username"/>
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
-                        <input class="form-control" name="email" id="email" type="email" placeholder="Email" value="{{ old('email') }}"/>
+                        <input class="form-control" name="email" id="email" type="email" placeholder="Email"/>
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
