@@ -18,27 +18,6 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for users
--- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users`  (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_role_fk` int UNSIGNED NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `users_username_unique`(`username` ASC) USING BTREE,
-  UNIQUE INDEX `users_email_unique`(`email` ASC) USING BTREE,
-  INDEX `users_id_role_fk_foreign`(`id_role_fk` ASC) USING BTREE,
-  CONSTRAINT `users_id_role_fk_foreign` FOREIGN KEY (`id_role_fk`) REFERENCES `roles` (`id_role`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Addel_01', 'addelsalindeho@gmail.com', '$2y$10$14f.B3wZvTmnt6YKRC3acuB9QkSOIHtbTC3bSbcIkyohSob.Y6nZy', 'Addel Salindeho', 2, NULL, '2023-01-10 08:33:07', '2023-01-10 08:33:07');
