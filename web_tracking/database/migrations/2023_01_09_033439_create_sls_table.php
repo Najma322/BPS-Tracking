@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id_sls');
 			$table->string('kode_sls');
 			$table->string('nama_rt_rw');
+            $table->string('kelompok_desa')->unique();
             $table->timestamps();
         });
     }

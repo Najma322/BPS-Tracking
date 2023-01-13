@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('desa', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('id_kecamatan_fk');
-			$table->string('id_desa')->primary();
+			$table->string('id_desa');
 			$table->string('nama_desa');
-			$table->unsignedInteger('id_sls_fk')->unique();
+			$table->string('kelompok_desa_fk');
             $table->timestamps();
         });
     }
