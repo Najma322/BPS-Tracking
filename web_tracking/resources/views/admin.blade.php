@@ -78,44 +78,46 @@
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                 </center>
                                 <div style="overflow-x:auto;">
-                                    <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                        <thead align=center>
-                                            <tr>
-                                                <th> </th>
-                                                <th>Provinsi</th>
-                                                <th>Kabupaten</th>
-                                                <th>NKS</th>
-                                                <th>Ruta</th>
-                                                <th>ID Petugas Lapangan</th>
-                                                <th>ID Supervisor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody align=center>
-                                            <tr>
-                                                <td>
-                                                    <p style="font-size: 13pt;">1</p>
-                                                </td>
-                                                <td>
-                                                    <p style="font-size: 13pt;">35</p>
-                                                </td>
-                                                <td>
-                                                    <p style="font-size: 13pt;">14</p>
-                                                </td>
-                                                <td>
-                                                    <p style="font-size: 13pt;">10023</p>
-                                                </td>
-                                                <td>
-                                                    <input type="number" class="form-control" id="Ruta" placeholder="Range Ruta">
-                                                </td>
-                                                <td>
-                                                    <input type="number" class="form-control" id="IDPetlap" placeholder="ID Petlap">
-                                                </td>
-                                                <td>
-                                                    <input type="number" class="form-control" id="IDSup" placeholder="ID Supervisor">
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <form method="post" action="{{ route('store.plotting') }}">
+                                        {{ csrf_field() }}
+                                        <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
+                                            <thead align=center>
+                                                <tr>
+                                                    <th>Provinsi</th>
+                                                    <th>Kabupaten</th>
+                                                    <th>NKS</th>
+                                                    <th>Ruta</th>
+                                                    <th>ID Petugas Lapangan</th>
+                                                    <th>ID Supervisor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align=center>
+                                                <tr>
+                                                    
+                                                        <td>
+                                                            <input type="number" name="id_provinsi" class="form-control" id="Provinsi" placeholder="ID Provinsi" value="35">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="id_kabupaten" class="form-control" id="Kabupaten" placeholder="ID Kabupaten" value="14">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="kode_nks" class="form-control" id="NKS" placeholder="Kode NKS">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="ruta_range" class="form-control" id="Ruta" placeholder="Range Ruta">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="id_petlap" class="form-control" id="IDPetlap" placeholder="ID Petlap">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="id_supervisor" class="form-control" id="IDSup" placeholder="ID Supervisor">
+                                                        </td>
+                                                    
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <input type="submit" class="btn" name="submit" value="Submit" style="float: right; margin-right: 10%; color: white; background-color: #3498db;">
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +137,7 @@
                     <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
                         <center>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #3498db; color: white;">
                             Jabatan
                             </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -292,7 +294,7 @@
                     <div class="container">
                         <div class="row align-items-start">
                             <div class="col-4">
-                                <input type="submit" name="register" class="btn btn-secondary" value="Sign Up" />
+                                <input type="submit" name="register" class="btn" value="Sign Up" style="background-color: #3498db; color: white;"/>
                             </div>
                         </div>
                     </div>

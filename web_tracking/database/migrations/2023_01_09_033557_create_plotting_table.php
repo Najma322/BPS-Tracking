@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('plotting', function (Blueprint $table) {
             $table->increments('id_plot');
-			$table->unsignedInteger('id_user_fk');
+			$table->unsignedInteger('id_petlap_fk');
+            $table->unsignedInteger('id_supervisor_fk');
 			$table->integer('id_provinsi_fk');
 			$table->integer('id_kabupaten_fk');
-			$table->unsignedInteger('id_nks_fk');
+			$table->string('kode_nks_fk');
 			$table->smallInteger('ruta');
-			$table->smallInteger('state');
+			$table->smallInteger('state')->default(0);
             $table->timestamps();
         });
     }

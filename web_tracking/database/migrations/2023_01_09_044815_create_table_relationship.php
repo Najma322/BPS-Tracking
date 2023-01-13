@@ -35,10 +35,11 @@ return new class extends Migration
         });
 
 		Schema::table('plotting', function (Blueprint $table) {
-            $table->foreign('id_user_fk')->references('id')->on('users');
+            $table->foreign('id_petlap_fk')->references('id')->on('users');
+            $table->foreign('id_supervisor_fk')->references('id')->on('users');
 			$table->foreign('id_provinsi_fk')->references('id_provinsi')->on('provinsi');
 			$table->foreign('id_kabupaten_fk')->references('id_kabupaten')->on('kabupaten');
-			$table->foreign('id_nks_fk')->references('id_nks')->on('nks');
+			$table->foreign('kode_nks_fk')->references('kode_nks')->on('nks');
         });
     }
 };

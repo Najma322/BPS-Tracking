@@ -156,22 +156,24 @@ class bps_controller extends Controller
     public function createPlotting(Request $request)
     {
         $request->validate([
-            'id_user'		=> 'required',
-            'id_provinsi'	=> 'required',
-            'id_kabupaten'	=> 'required',
-            'id_nks'        => 'required',
-            'ruta_range'	=> 'required',
+            'id_petlap'      => 'required',
+            'id_supervisor'  => 'required',
+            'id_provinsi'    => 'required',
+            'id_kabupaten'   => 'required',
+            'kode_nks'       => 'required',
+            'ruta_range'     => 'required',
         ]);
 
         $plotting = new bps_plotting_model;
-        $plotting -> id_user_fk			= $request -> id_user;
+        $plotting -> id_petlap_fk		= $request -> id_petlap;
+        $plotting -> id_supervisor_fk	= $request -> id_supervisor;
         $plotting -> id_provinsi_fk		= $request -> id_provinsi;
         $plotting -> id_kabupaten_fk	= $request -> id_kabupaten;
-        $plotting -> id_nks_fk			= $request -> id_nks;
+        $plotting -> kode_nks_fk		= $request -> kode_nks;
         $plotting -> ruta				= $request -> ruta_range;
         $plotting -> save();
 
-        return redirect('miminPage')->with('success', 'Plotting telah berhasil ditambahkan');
+        return redirect('admin')->with('success', 'Plotting telah berhasil ditambahkan');
     }
     // ============================================================================================= EMPLOYEES PAGE
 

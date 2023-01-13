@@ -26,6 +26,7 @@ Route::get('signout', [bps_controller::class, 'signOut']);
 
 // Landing Employee
 Route::get('dashboard', [bps_controller::class, 'dashboard']);
+Route::post('storePlotting', [bps_controller::class, 'createPlotting'])->name('store.plotting');
 
 // Employees Page
 Route::get('supervisor', [bps_controller::class, 'superPage']);
