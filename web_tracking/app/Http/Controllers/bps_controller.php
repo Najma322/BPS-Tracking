@@ -146,7 +146,11 @@ class bps_controller extends Controller
             return redirect('login') -> with('error', 'Anda belum login');
         }
 
-        return view('admin', compact('user_name', 'user_role'));
+        $dbUsers = DB::table('users')
+                    ->select('id', 'nama', 'username', 'email', 'id_role_fk')
+                    ->get();
+
+        return view('admin', compact('user_name', 'dbUsers'));
     }
 
     public function createPlotting(Request $request)

@@ -155,27 +155,31 @@
                                     <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                         <thead align=center>
                                             <tr>
-                                                <th>Id </th>
+                                                <th>ID Pegawai</th>
                                                 <th>Nama</th>
                                                 <th>Username</th>
                                                 <th>Email</th>
                                             </tr>
                                         </thead>
                                         <tbody align=center>
+                                            @foreach($dbUsers as $row)
+                                            @if($row -> id_role_fk == 2)
                                             <tr>
                                                 <td>
-                                                    <p style="font-size: 13pt;">1</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> id }}</p>
                                                 </td>
                                                 <td>
-                                                    <p style="font-size: 13pt;">Addel Salindeho</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> nama }}</p>
                                                 </td>
                                                 <td>
-                                                    <p style="font-size: 13pt;">Addel_01</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> username }}</p>
                                                 </td>
                                                 <td>
-                                                    <p style="font-size: 13pt;">addelsalindeho@gmail.com</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> email }}</p>
                                                 </td>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -198,20 +202,24 @@
                                             </tr>
                                         </thead>
                                         <tbody align=center>
+                                            @foreach($dbUsers as $row)
+                                            @if($row -> id_role_fk == 1)
                                             <tr>
                                                 <td>
-                                                    <p style="font-size: 13pt;">1</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> id }}</p>
                                                 </td>
                                                 <td>
-                                                    <p style="font-size: 13pt;">Addel Salindeho</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> nama }}</p>
                                                 </td>
                                                 <td>
-                                                    <p style="font-size: 13pt;">Addel_01</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> username }}</p>
                                                 </td>
                                                 <td>
-                                                    <p style="font-size: 13pt;">addelsalindeho@gmail.com</p>
+                                                    <p style="font-size: 13pt;">{{ $row -> email }}</p>
                                                 </td>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
