@@ -23,7 +23,11 @@ return new class extends Migration
 
 		Schema::table('desa', function (Blueprint $table) {
             $table->foreign('id_kecamatan_fk')->references('id_kecamatan')->on('kecamatan');
-			$table->foreign('kelompok_desa_fk')->references('kelompok_desa')->on('sls');
+        });
+
+        Schema::table('sls', function (Blueprint $table) {
+            $table->foreign('id_kecamatan_fk')->references('id_kecamatan')->on('kecamatan');
+			$table->foreign('id_desa_fk')->references('id_desa')->on('desa');
         });
 
 		Schema::table('users', function (Blueprint $table) {

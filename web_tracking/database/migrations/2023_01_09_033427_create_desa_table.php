@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('desa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('id_kecamatan_fk');
-			$table->string('id_desa');
+			$table->string('id_desa')->index();
 			$table->string('nama_desa');
-			$table->string('kelompok_desa_fk');
+			//$table->string('kelompok_desa_fk');
             $table->timestamps();
         });
     }
