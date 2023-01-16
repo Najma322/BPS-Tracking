@@ -132,7 +132,12 @@ class bps_controller extends Controller
             return redirect('login') -> with('error', 'Anda belum login');
         }
 
-        return view('petlap', compact('user_name'));
+        $dbPlotting = DB::table('plotting')
+                        ->select('id_plot', 'id_petlap_fk', 'id_provinsi_fk', 'id_kabupaten_fk', 'kode_nks_fk', 'ruta', 'state')
+                        ->where('id_petlap_fk', '=', $user_id)
+                        ->get();
+
+        return view('petlap', compact('user_name', 'dbPlotting'));
     }
 
 	public function miminPage()
@@ -155,7 +160,8 @@ class bps_controller extends Controller
 
     public function createPlotting(Request $request)
     {
-        $request->validate([
+        $request->validate
+        ([
             'id_petlap'      => 'required',
             'id_supervisor'  => 'required',
             'id_provinsi'    => 'required',
@@ -177,6 +183,20 @@ class bps_controller extends Controller
         }
 
         return redirect('admin')->with('success', 'Plotting telah berhasil ditambahkan');
+    }
+
+    public function updatePlotting(Request $request)
+    {
+        $request -> validate
+        ([
+            'status'    => 'required',
+            'id_plot'   => 'required'
+        ]);
+
+        bps_plotting_model::where('id_plot', $request -> id_plot)
+                            ->update(['state' => $request -> status]);
+
+        return redirect('petlap') -> with('success', 'Status plot telah di-update');
     }
     // ============================================================================================= EMPLOYEES PAGE
 

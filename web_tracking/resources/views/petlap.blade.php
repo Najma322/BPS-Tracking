@@ -62,7 +62,7 @@
     </header>
     <!-- End Header -->
 
-    <!-- ======= Form Section ======= -->
+    <!-- ======= Plotting Section ======= -->
     <section id="form" class="d-flex align-items-center">
 
         <div class="container">
@@ -78,40 +78,50 @@
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
                                     <div style="overflow-x:auto;">
-                                    <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                    <thead>
-                                        <tr>
-                                        <th> </th>
-                                        <th>Provinsi</th>
-                                        <th>Kabupaten</th>
-                                        <th>NKS</th>
-                                        <th>Ruta</th>
-                                        <th>Gambar</th>
-                                        <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody >
-                                        <tr>
-                                        <td><p style="font-size: 13pt;">1</p></td>
-                                        <td><p style="font-size: 13pt;">35</p></td>
-                                        <td><p style="font-size: 13pt;">14</p></td>
-                                        <td><p style="font-size: 13pt;">10023</p></td>
-                                        <td><p style="font-size: 13pt;">1</p></td>
-                                        <td>
-                                        <button type="button" class="btn btn-warning">Upload</button>
-                                        <button type="button" class="btn btn-info">Foto</button>
-                                        </td>
-                                        <td>
-                                        <select name="status" id="status" style="font-size: 13pt;">
-                                        <option value="berhasil" style="font-size: 12pt;">1. Berhasil</option>
-                                        <option value="menolak" style="font-size: 12pt;">2. Menolak</option>
-                                        <option value="tidakdapatditemui" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
-                                        <option value="belumselesai" style="font-size: 12pt;">0. Belum selesai</option>
-                                        </select>
-                                        </td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
+                                        <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
+                                            <thead>
+                                                <tr>
+                                                <th>ID Plotting</th>
+                                                <th>Provinsi</th>
+                                                <th>Kabupaten</th>
+                                                <th>NKS</th>
+                                                <th>Ruta</th>
+                                                <th>Gambar</th>
+                                                <th>Status</th>
+                                                <th>Update</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody >
+                                                @foreach($dbPlotting as $row)
+                                                <form method="post" action="{{ route('update.plotting') }}">
+                                                {{ csrf_field() }}
+                                                    <tr>
+                                                        <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
+                                                        <td><p style="font-size: 13pt;">{{ $row -> id_plot }}</p></td>
+                                                        <td><p style="font-size: 13pt;">{{ $row -> id_provinsi_fk }}</p></td>
+                                                        <td><p style="font-size: 13pt;">{{ $row -> id_kabupaten_fk }}</p></td>
+                                                        <td><p style="font-size: 13pt;">{{ $row -> kode_nks_fk }}</p></td>
+                                                        <td><p style="font-size: 13pt;">{{ $row -> ruta }}</p></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-warning">Upload</button>
+                                                            <button type="button" class="btn btn-info">Foto</button>
+                                                        </td>
+                                                        <td>
+                                                            <select name="status" id="status" style="font-size: 13pt;" value>
+                                                                <option value="1" style="font-size: 12pt;">1. Berhasil</option>
+                                                                <option value="2" style="font-size: 12pt;">2. Menolak</option>
+                                                                <option value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                                                <option value="0" style="font-size: 12pt;">0. Belum selesai</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="submit" value="Submit" class="btn" name="submit" style="color: white; background-color: #3498db;">
+                                                        </td>
+                                                    </tr>
+                                                </form>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
