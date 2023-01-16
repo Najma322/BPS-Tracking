@@ -108,6 +108,15 @@
                                                         </td>
                                                         <td>
                                                             <select name="status" id="status" style="font-size: 13pt;" value>
+                                                                @if($row -> state == 1)
+                                                                <option selected hidden value="1" style="font-size: 12pt;">1. Berhasil</option>
+                                                                @elseif($row -> state == 2)
+                                                                <option selected hidden value="2" style="font-size: 12pt;">2. Menolak</option>
+                                                                @elseif($row -> state == 3)
+                                                                <option selected hidden value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                                                @else
+                                                                <option selected hidden value="0" style="font-size: 12pt;">0. Belum selesai</option>
+                                                                @endif
                                                                 <option value="1" style="font-size: 12pt;">1. Berhasil</option>
                                                                 <option value="2" style="font-size: 12pt;">2. Menolak</option>
                                                                 <option value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
