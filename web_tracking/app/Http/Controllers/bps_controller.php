@@ -182,7 +182,7 @@ class bps_controller extends Controller
             $plotting -> save();
         }
 
-        return redirect('admin')->with('success', 'Plotting telah berhasil ditambahkan');
+        return redirect('admin')->with('successPlot', 'Plotting telah berhasil ditambahkan');
     }
 
     public function updatePlotting(Request $request)

@@ -73,6 +73,12 @@
                     <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
                         <div class="card info-card customers-card">
                             <div class="card-body">
+                                <br> @if (\Session::has('successPlot'))
+                                <div class="alert alert-success">
+                                    <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                    <strong>{!! \Session::get('successPlot') !!}</strong>
+                                </div>
+                                @endif
                                 <!-- ========================= Isi Card ========================= -->
                                 <center>
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
@@ -93,24 +99,24 @@
                                             </thead>
                                             <tbody align=center>
                                                 <tr>
-                                                        <td>
-                                                            <input type="number" name="id_provinsi" class="form-control" id="Provinsi" placeholder="ID Provinsi" value="35">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="id_kabupaten" class="form-control" id="Kabupaten" placeholder="ID Kabupaten" value="14">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="kode_nks" class="form-control" id="NKS" placeholder="Kode NKS">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="ruta_range" class="form-control" id="Ruta" placeholder="Range Ruta">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="id_petlap" class="form-control" id="IDPetlap" placeholder="ID Petlap">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" name="id_supervisor" class="form-control" id="IDSup" placeholder="ID Supervisor">
-                                                        </td>
+                                                    <td>
+                                                        <input type="number" name="id_provinsi" class="form-control" id="Provinsi" placeholder="ID Provinsi" value="35">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="id_kabupaten" class="form-control" id="Kabupaten" placeholder="ID Kabupaten" value="14">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="kode_nks" class="form-control" id="NKS" placeholder="Kode NKS">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="ruta_range" class="form-control" id="Ruta" placeholder="Range Ruta">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="id_petlap" class="form-control" id="IDPetlap" placeholder="ID Petlap">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="id_supervisor" class="form-control" id="IDSup" placeholder="ID Supervisor">
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -162,8 +168,7 @@
                                             </tr>
                                         </thead>
                                         <tbody align=center>
-                                            @foreach($dbUsers as $row)
-                                            @if($row -> id_role_fk == 2)
+                                            @foreach($dbUsers as $row) @if($row -> id_role_fk == 2)
                                             <tr>
                                                 <td>
                                                     <p style="font-size: 13pt;">{{ $row -> id }}</p>
@@ -178,8 +183,7 @@
                                                     <p style="font-size: 13pt;">{{ $row -> email }}</p>
                                                 </td>
                                             </tr>
-                                            @endif
-                                            @endforeach
+                                            @endif @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -202,8 +206,7 @@
                                             </tr>
                                         </thead>
                                         <tbody align=center>
-                                            @foreach($dbUsers as $row)
-                                            @if($row -> id_role_fk == 1)
+                                            @foreach($dbUsers as $row) @if($row -> id_role_fk == 1)
                                             <tr>
                                                 <td>
                                                     <p style="font-size: 13pt;">{{ $row -> id }}</p>
@@ -218,8 +221,7 @@
                                                     <p style="font-size: 13pt;">{{ $row -> email }}</p>
                                                 </td>
                                             </tr>
-                                            @endif
-                                            @endforeach
+                                            @endif @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -240,40 +242,36 @@
                 <center>
                     <h1 class="fst-italic" style="font-size: 40px; color: #1C256A;">Survei Angkatan Kerja Nasional (SAKERNAS) 2023</h1>
                 </center>
-                <br>
-                @if (\Session::has('success'))
-                    <div class="alert alert-success">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
-                        <strong>{!! \Session::get('success') !!}</strong>
-                    </div>
+                <br> @if (\Session::has('success'))
+                <div class="alert alert-success">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                    <strong>{!! \Session::get('success') !!}</strong>
+                </div>
                 @endif
                 <form method='post' action="{{ route('register.custom') }}">
                     {{ csrf_field() }}
                     <!-- Email address input-->
                     <div class="row input-group-newsletter">
-                        <input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap" value="{{ old('name') }}"/>
+                        <input class="form-control" name="name" id="text" type="text" placeholder="Nama Lengkap" value="{{ old('name') }}" />
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
-                        <input class="form-control" name="username" id="username" type="username" placeholder="Username" value="{{ old('username') }}"/>
+                        <input class="form-control" name="username" id="username" type="username" placeholder="Username" value="{{ old('username') }}" />
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
-                        <input class="form-control" name="email" id="email" type="email" placeholder="Email" value="{{ old('email') }}"/>
+                        <input class="form-control" name="email" id="email" type="email" placeholder="Email" value="{{ old('email') }}" />
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password"/>
-
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password" /> @error('password')
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            </span> @enderror
                     </div>
                     <br>
                     <div class="row input-group-newsletter">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Konfirmasi password"/>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="current-password" placeholder="Konfirmasi password" />
                     </div>
                     <br>
                     <p>Petugas</p>
@@ -292,13 +290,13 @@
                     <div class="container">
                         <div class="row align-items-start">
                             <div class="col-4">
-                                <input type="submit" name="register" class="btn" value="Sign Up" style="background-color: #3498db; color: white;"/>
+                                <input type="submit" name="register" class="btn" value="Sign Up" style="background-color: #3498db; color: white;" />
                             </div>
                         </div>
                     </div>
                     <br>
                 </form>
-                
+
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
                 <img src="./bps_resources/img/hero-img.png" class="img-fluid animated" alt="">
@@ -427,9 +425,9 @@
 
     <!-- Template Main JS File -->
     <script src="./bps_resources/js/main.js"></script>
-    <script> //Show page section
-        function showPlot()
-        {
+    <script>
+        //Show page section
+        function showPlot() {
             var x = document.getElementById('cardPlot');
             var y = document.getElementById('cardMonitor');
             var z = document.getElementById('cardRegister');
@@ -439,8 +437,7 @@
             z.style.display = 'none';
         }
 
-        function showMonitor()
-        {
+        function showMonitor() {
             var x = document.getElementById('cardPlot');
             var y = document.getElementById('cardMonitor');
             var z = document.getElementById('cardRegister');
@@ -450,8 +447,7 @@
             z.style.display = 'none';
         }
 
-        function showRegister()
-        {
+        function showRegister() {
             var x = document.getElementById('cardPlot');
             var y = document.getElementById('cardMonitor');
             var z = document.getElementById('cardRegister');
@@ -461,9 +457,9 @@
             z.style.display = 'block';
         }
     </script>
-    <script> //Show monitor card
-        function gantiHalamanSup()
-        {
+    <script>
+        //Show monitor card
+        function gantiHalamanSup() {
             var x = document.getElementById("petlap");
             var y = document.getElementById("sup");
 
@@ -471,8 +467,7 @@
             y.style.display = "block";
         }
 
-        function gantiHalamanLap()
-        {
+        function gantiHalamanLap() {
             var x = document.getElementById("petlap");
             var y = document.getElementById("sup");
 
@@ -480,7 +475,8 @@
             y.style.display = "none";
         }
     </script>
-    <script> // Change active class when clicked
+    <script>
+        // Change active class when clicked
         // Get the container element
         var btnContainer = document.getElementById("navbar");
 
@@ -489,11 +485,11 @@
 
         // Loop through the buttons and add the active class to the current/clicked button
         for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
         }
     </script>
 </body>
