@@ -103,8 +103,8 @@
                                                         <td><p style="font-size: 13pt;">{{ $row -> kode_nks_fk }}</p></td>
                                                         <td><p style="font-size: 13pt;">{{ $row -> ruta }}</p></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-warning">Upload</button>
-                                                            <button type="button" class="btn btn-info">Foto</button>
+                                                            <button type="button" class="btn btn-warning" style="color: white;">Upload</button>
+                                                            <button type="button" class="btn btn-info" style="color: white;">Foto</button>
                                                         </td>
                                                         <td>
                                                             <select name="status" id="status" style="font-size: 13pt;" value>
@@ -124,7 +124,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="submit" value="Submit" class="btn" name="submit" style="color: white; background-color: #3498db;">
+                                                            <input type="submit" value="Update" class="btn" name="submit" style="color: white; background-color: #3498db;">
                                                         </td>
                                                     </tr>
                                                 </form>
