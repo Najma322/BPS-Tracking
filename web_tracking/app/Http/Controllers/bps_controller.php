@@ -118,8 +118,10 @@ class bps_controller extends Controller
 		} else {
             return redirect('login') -> with('error', 'Anda belum login');
         }
-
-        return view('supervisor', compact('user_name'));
+        $dbSupervisor = DB::table('plotting')
+        ->select('id_plot', 'id_petlap_fk', 'id_provinsi_fk', 'id_kabupaten_fk', 'kode_nks_fk', 'ruta', 'state')
+        ->get();
+        return view('supervisor', compact('user_name','dbSupervisor'));
     }
 
 	public function petlapPage()

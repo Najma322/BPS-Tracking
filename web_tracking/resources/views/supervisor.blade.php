@@ -89,44 +89,62 @@
                                     <center>
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
+                                    <br> @if (\Session::has('success'))
+                                    <div class="alert alert-success">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                        <strong>{!! \Session::get('success') !!}</strong>
+                                    </div>
+                                    @endif
                                     <div style="overflow-x:auto;">
-                                    <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                    <thead align=center>
-                                        <tr>
-                                        <th> </th>
-                                        <th>Provinsi</th>
-                                        <th>Kabupaten</th>
-                                        <th>NKS</th>
-                                        <th>Ruta</th>
-                                        <th>Status</th>
-                                        <th>Gambar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody align=center>
-                                        <tr>
-                                        <td><p style="font-size: 13pt;">1</p></td>
-                                        <td><p style="font-size: 13pt;">35</p></td>
-                                        <td><p style="font-size: 13pt;">14</p></td>
-                                        <td><p style="font-size: 13pt;">10023</p></td>
-                                        <td><p style="font-size: 13pt;">1</p></td>
-                                        <td>
-                                        <button type="button" class="btn btn-success">1. Berhasil</button>
-                                        <button type="button" class="btn btn-danger">2. Menolak</button>
-                                        <button type="button" class="btn btn-warning">3. Tidak Dapat Ditemui</button>
-                                        <button type="button" class="btn btn-info">0. Belum Selesai</button>
-                                        </td>
-                                        <td>
-                                        <button type="button" class="btn" style="background-color: #3498db; color: white;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                                        </svg>
-                                        View</button>
-                                        </select>
-                                        </td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
+                                        <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
+                                            <thead align=center>
+                                                <tr>
+                                                <th>ID Plot</th>
+                                                <th>Provinsi</th>
+                                                <th>Kabupaten</th>
+                                                <th>NKS</th>
+                                                <th>Ruta</th>
+                                                <th>Status</th>
+                                                <th>Gambar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align=center>
+                                            @foreach($dbSupervisor as $row)
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_plot }}</p></td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_provinsi_fk }}</p></td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_kabupaten_fk }}</p></td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> kode_nks_fk }}</p></td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> ruta }}</p></td>
+                                                    <td>
+                                                    @if($row -> state == 1)
+                                                    <button type="button" class="btn btn-success">1. Berhasil</button>
+                                                    @elseif($row -> state == 2)
+                                                    <button type="button" class="btn btn-danger">2. Menolak</button>
+                                                    @elseif($row -> state == 3)
+                                                    <button type="button" class="btn btn-warning">3. Tidak Dapat Ditemui</button>
+                                                    @elseif($row -> state == 0)
+                                                    <button type="button" class="btn btn-secondary">0. Belum Selesai</button>
+                                                    @endif
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn" style="background-color: #3498db; color: white;">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                                        </svg>
+                                                        View</button>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +153,6 @@
                 </div>
             </div>
         </div>
-
     </section>
     <!-- End Hero -->
 
