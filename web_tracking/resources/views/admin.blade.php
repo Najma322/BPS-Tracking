@@ -93,7 +93,6 @@
                                             </thead>
                                             <tbody align=center>
                                                 <tr>
-                                                    
                                                         <td>
                                                             <input type="number" name="id_provinsi" class="form-control" id="Provinsi" placeholder="ID Provinsi" value="35">
                                                         </td>
@@ -112,7 +111,6 @@
                                                         <td>
                                                             <input type="number" name="id_supervisor" class="form-control" id="IDSup" placeholder="ID Supervisor">
                                                         </td>
-                                                    
                                                 </tr>
                                             </tbody>
                                         </table>

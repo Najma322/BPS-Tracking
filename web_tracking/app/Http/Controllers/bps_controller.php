@@ -164,14 +164,17 @@ class bps_controller extends Controller
             'ruta_range'     => 'required',
         ]);
 
-        $plotting = new bps_plotting_model;
-        $plotting -> id_petlap_fk		= $request -> id_petlap;
-        $plotting -> id_supervisor_fk	= $request -> id_supervisor;
-        $plotting -> id_provinsi_fk		= $request -> id_provinsi;
-        $plotting -> id_kabupaten_fk	= $request -> id_kabupaten;
-        $plotting -> kode_nks_fk		= $request -> kode_nks;
-        $plotting -> ruta				= $request -> ruta_range;
-        $plotting -> save();
+        for ($x = 1; $x <= $request -> ruta_range; $x++)
+        {
+            $plotting = new bps_plotting_model;
+            $plotting -> id_petlap_fk		= $request -> id_petlap;
+            $plotting -> id_supervisor_fk	= $request -> id_supervisor;
+            $plotting -> id_provinsi_fk		= $request -> id_provinsi;
+            $plotting -> id_kabupaten_fk	= $request -> id_kabupaten;
+            $plotting -> kode_nks_fk		= $request -> kode_nks;
+            $plotting -> ruta				= $x;
+            $plotting -> save();
+        }
 
         return redirect('admin')->with('success', 'Plotting telah berhasil ditambahkan');
     }

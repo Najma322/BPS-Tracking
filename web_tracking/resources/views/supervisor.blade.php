@@ -104,7 +104,7 @@
                                     </thead>
                                     <tbody align=center>
                                         <tr>
-                                        <td><p style=center"font-size: 13pt;">1</p></td>
+                                        <td><p style="font-size: 13pt;">1</p></td>
                                         <td><p style="font-size: 13pt;">35</p></td>
                                         <td><p style="font-size: 13pt;">14</p></td>
                                         <td><p style="font-size: 13pt;">10023</p></td>
