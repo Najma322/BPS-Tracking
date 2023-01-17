@@ -89,12 +89,6 @@
                                     <center>
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
-                                    <br> @if (\Session::has('success'))
-                                    <div class="alert alert-success">
-                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
-                                        <strong>{!! \Session::get('success') !!}</strong>
-                                    </div>
-                                    @endif
                                     <div style="overflow-x:auto;">
                                         <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                             <thead align=center>
