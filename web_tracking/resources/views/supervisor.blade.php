@@ -76,7 +76,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($petlapNames as $row)
-                                <li><a class="dropdown-item" href="#">{{ $row -> nama }}</a></li>
+                                <li><a onclick="showForm('x{{ $row -> id }}')" class="dropdown-item" href="#">{{ $row -> nama }}</a></li>
                                 @endforeach
                             </ul>
                             </div>
@@ -281,22 +281,22 @@
     <!-- Template Main JS File -->
     <script src="./bps_resources/js/main.js"></script>
 
-    @foreach($petlapNames as $row)
-        <script>
-            // Show form card
-            function showForm() {
-                var x = document.getElementById("petlapForm{{ $row -> id }}");
-                var y = document.getElementById("sup");
-
-                x.style.display = "block";
-                y.style.display = "none";
+    <script>
+        // Show form card
+        function showForm(petugas)
+        {
+            @foreach($petlapNames as $row)
+            if (petugas == 'x{{ $row -> id }}')
+            {
+                console.log('found {{ $row -> id }}');
+                var show = document.getElementById();
             }
+            @endforeach
+            // var x = document.getElementById();
 
-            
-            console.log('Petlap' + {{ $row -> id }});
-        </script>
-    @endforeach
-    {{ console.log(count($petlapNames)) }}
+            // x.style.display = "none";
+        }
+    </script>
 
 </body>
 
