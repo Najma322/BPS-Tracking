@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plotting', function (Blueprint $table) {
-            $table->increments('id_plot');
-			$table->unsignedInteger('id_petlap_fk');
-            $table->unsignedInteger('id_supervisor_fk');
-			$table->integer('id_provinsi_fk');
-			$table->integer('id_kabupaten_fk');
-			$table->string('kode_nks_fk');
-			$table->smallInteger('ruta');
-			$table->smallInteger('state')->default(0);
+        Schema::create('photos', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plotting');
+        Schema::dropIfExists('photos');
     }
 };
