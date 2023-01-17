@@ -179,7 +179,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="submit" value="Submit" class="btn" name="submit" style="color: white; background-color: #3498db;">
+                                                            <input type="submit" value="Update" class="btn" name="submit" style="color: white; background-color: #3498db;">
                                                         </td>
                                                     </tr>
                                                 </form>
