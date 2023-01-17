@@ -99,10 +99,8 @@
                                             </thead>
                                             <tbody align=center>
                                                 @foreach($dbPlotting as $row)
-                                                <form method="post" action="{{ route('update.plotting') }}">
-                                                    {{ csrf_field() }}
+                                                
                                                     <tr>
-                                                        <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
                                                         <td>
                                                             <p style="font-size: 13pt;">{{ $row -> id_plot }}</p>
                                                         </td>
@@ -139,21 +137,22 @@
                                                                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                                                                 <strong>{{ $message }}</strong>
                                                                             </div>
-                                                                            <img src="images/{{ Session::get('image') }}"> @endif
+                                                                            <img src="images/{{ Session::get('image') }}">
+                                                                            @endif
 
                                                                             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
-                                                                                @csrf
-
+                                                                                {{ csrf_field() }}
                                                                                 <div class="mb-3">
                                                                                     <label class="form-label" for="inputImage">Image:</label>
-                                                                                    <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror"> @error('image')
-                                                                                    <span class="text-danger">{{ $message }}</span> @enderror
+                                                                                    <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
+                                                                                    @error('image')
+                                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                                    @enderror
                                                                                 </div>
 
                                                                                 <div class="mb-3">
-                                                                                    <button type="submit" class="btn" style="color: white; background-color: #3498db;">Upload</button>
+                                                                                    <input type="submit" class="btn" style="color: white; background-color: #3498db;" />
                                                                                 </div>
-
                                                                             </form>
                                                                         </div>
                                                                     </div>
@@ -161,28 +160,31 @@
                                                             </div>
                                                             <button type="button" class="btn" style='background-color: seagreen; color:white'>Ambil Gambar</button>
                                                         </td>
-                                                        <td>
-                                                            <select name="status" id="status" style="font-size: 13pt;" value>
-                                                                @if($row -> state == 1)
-                                                                <option selected hidden value="1" style="font-size: 12pt;">1. Berhasil</option>
-                                                                @elseif($row -> state == 2)
-                                                                <option selected hidden value="2" style="font-size: 12pt;">2. Menolak</option>
-                                                                @elseif($row -> state == 3)
-                                                                <option selected hidden value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
-                                                                @else
-                                                                <option selected hidden value="0" style="font-size: 12pt;">0. Belum selesai</option>
-                                                                @endif
-                                                                <option value="1" style="font-size: 12pt;">1. Berhasil</option>
-                                                                <option value="2" style="font-size: 12pt;">2. Menolak</option>
-                                                                <option value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
-                                                                <option value="0" style="font-size: 12pt;">0. Belum selesai</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input type="submit" value="Update" class="btn" name="submit" style="color: white; background-color: #3498db;">
-                                                        </td>
+                                                        <form method="post" action="{{ route('update.plotting') }}">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
+                                                            <td>
+                                                                <select name="status" id="status" style="font-size: 13pt;" value>
+                                                                    @if($row -> state == 1)
+                                                                    <option selected hidden value="1" style="font-size: 12pt;">1. Berhasil</option>
+                                                                    @elseif($row -> state == 2)
+                                                                    <option selected hidden value="2" style="font-size: 12pt;">2. Menolak</option>
+                                                                    @elseif($row -> state == 3)
+                                                                    <option selected hidden value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                                                    @else
+                                                                    <option selected hidden value="0" style="font-size: 12pt;">0. Belum selesai</option>
+                                                                    @endif
+                                                                    <option value="1" style="font-size: 12pt;">1. Berhasil</option>
+                                                                    <option value="2" style="font-size: 12pt;">2. Menolak</option>
+                                                                    <option value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                                                    <option value="0" style="font-size: 12pt;">0. Belum selesai</option>
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <input type="submit" value="Update" class="btn" name="submit" style="color: white; background-color: #3498db;">
+                                                            </td>
+                                                        </form>
                                                     </tr>
-                                                </form>
                                                 @endforeach
                                             </tbody>
                                         </table>

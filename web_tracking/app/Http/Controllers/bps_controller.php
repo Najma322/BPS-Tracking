@@ -224,15 +224,9 @@ class bps_controller extends Controller
     {
 		return view('petlap');
     } */
-   
-        public function index()
-        {
-            return view('image');
-        }
      
-        public function store(Request $request)
+        public function storeIMG(Request $request)
         {
-             
             $validatedData = $request->validate([
              'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
      
@@ -240,7 +234,7 @@ class bps_controller extends Controller
      
             $name = $request->file('image')->getClientOriginalName();
      
-            $path = $request->file('image')->store('public/bps_resources/upload');
+            $path = $request->file('image')->store('public/image_upload');
      
      
             $save = new Image;
@@ -250,7 +244,7 @@ class bps_controller extends Controller
      
             $save->save();
      
-          return redirect('image-upload')->with('status', 'Image Has been uploaded')->with('image',$name);
+          return redirect('petlap')->with('status', 'Image Has been uploaded')->with('image',$name);
     }
     
 }
