@@ -174,7 +174,11 @@ class bps_controller extends Controller
                     ->select('id', 'nama', 'username', 'email', 'id_role_fk')
                     ->get();
 
-        return view('admin', compact('user_name', 'dbUsers'));
+        $dbPlot = DB::table('plotting')
+                    ->select('*')
+                    ->get();
+
+        return view('admin', compact('user_name', 'dbUsers', 'dbPlot'));
     }
 
     public function createPlotting(Request $request)
@@ -223,22 +227,22 @@ class bps_controller extends Controller
             $validatedData = $request->validate([
              'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
              'id_plot' => 'required'
-     
+
             ]);
-     
+
             $name = $request->file('image')->getClientOriginalName();
-     
+
             $path = $request->file('image')->store('public/image_upload');
-     
-     
+
+
             $save = new Image;
-     
+
             $save->name = $name;
             $save->path = $path;
             $save->id_plot_fk = $request -> id_plot;
-     
+
             $save->save();
-     
+
           return redirect('petlap')->with('status', 'Gambar telah berhasil terupload!')->with('image',$name);
     }
     // ============================================================================================= EMPLOYEES PAGE
@@ -248,8 +252,8 @@ class bps_controller extends Controller
     {
 		return view('petlap');
     } */
-     
-        
-    
+
+
+
 }
 

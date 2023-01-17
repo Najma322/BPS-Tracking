@@ -28,7 +28,9 @@
     <!-- Template Main CSS File -->
     <link href="./bps_resources/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/fh-3.3.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/fh-3.3.1/datatables.min.js"></script>    <!-- =======================================================
   * Template Name: Vesperr - v4.10.0
   * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
   * Author: BootstrapMade.com
@@ -132,6 +134,79 @@
     </div>
     <!-- End Form section -->
 
+    <!-- ======= PLOTTING ====== -->
+    <div class="container" id="cardPlot">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <!-- First Card -->
+                    <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
+                        <div class="card info-card customers-card">
+                            <div class="card-body">
+                                <div style="overflow-x:auto;">
+                                    <table class="table display-center" id="example" style='font-size:20px;position:center;'>
+                                        <thead align=center>
+                                            <tr>
+                                                <th>ID Plotting</th>
+                                                <th>ID PetLap</th>
+                                                <th>ID Supervisor</th>
+                                                <th>Provinsi</th>
+                                                <th>Kabupaten</th>
+                                                <th>NKS</th>
+                                                <th>Ruta</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody align=center>
+                                            @foreach($dbPlot as $row)
+                                            
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_plot }}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_petlap_fk }}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_supervisor_fk }}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_provinsi_fk }}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> id_kabupaten_fk }}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> kode_nks_fk }}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="font-size: 13pt;">{{ $row -> ruta }}</p>
+                                                    </td>
+                                                    <td>
+                                                        @if($row -> state == 1)
+                                                        <button type="button" class="btn btn-success">1. Berhasil</button>
+                                                        @elseif($row -> state == 2)
+                                                        <button type="button" class="btn btn-danger">2. Menolak</button>
+                                                        @elseif($row -> state == 3)
+                                                        <button type="button" class="btn btn-warning">3. Tidak Dapat Ditemui</button>
+                                                        @elseif($row -> state == 0)
+                                                        <button type="button" class="btn btn-secondary">0. Belum Selesai</button>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======= END PLOTTING ======= -->
+
     <!------------------------- Form Monitor Supervisor ------------------------->
     <div class="container" style="display: none;" id="cardMonitor">
         <div class="row">
@@ -199,7 +274,7 @@
                                     <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                         <thead align=center>
                                             <tr>
-                                                <th>Id </th>
+                                                <th>ID Pegawai</th>
                                                 <th>Nama</th>
                                                 <th>Username</th>
                                                 <th>Email</th>
@@ -491,6 +566,71 @@
                 this.className += " active";
             });
         }
+    </script>
+
+<!-- DataTables -->
+    <script>
+        $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#example thead tr')
+            .clone(true)
+            .addClass('filters')
+            .appendTo('#example thead');
+    
+        var table = $('#example').DataTable({
+            orderCellsTop: true,
+            fixedHeader: true,
+            initComplete: function () {
+                var api = this.api();
+    
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        $(cell).html('<input type="text" placeholder="' + title + '" />');
+    
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('change', function (e) {
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+    
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+                            })
+                            .on('keyup', function (e) {
+                                e.stopPropagation();
+    
+                                $(this).trigger('change');
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+        });
+    });
     </script>
 </body>
 
