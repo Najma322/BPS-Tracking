@@ -75,40 +75,37 @@
                                 Petugas Lapangan
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                @foreach($petlapNames as $row)
-                                <li><a class="dropdown-item" href="#">{{ $row -> nama }}</a></li>
-                                @endforeach
+                                <li><a class="dropdown-item" href="#">Yunus</a></li>
+                                <li><a class="dropdown-item" href="#">Ainul</a></li>
+                                <li><a class="dropdown-item" href="#">Hadi Pur</a></li>
+                                <li><a class="dropdown-item" href="#">Aab</a></li>
                             </ul>
                             </div>
                             </center>
                             <br>
                             <div class="card info-card customers-card">
-                                @foreach($petlapNames as $motherRow)
-                                <div class="card-body" id="petlapForm{{ $motherRow -> id }}">
+                                <div class="card-body">
                                     <!-- ========================= Isi Card ========================= -->
                                     <center>
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
-                                    <br>
-                                    
-                                    @if (\Session::has('success'))
+                                    <br> @if (\Session::has('success'))
                                     <div class="alert alert-success">
                                         <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
                                         <strong>{!! \Session::get('success') !!}</strong>
                                     </div>
                                     @endif
-                                    
                                     <div style="overflow-x:auto;">
                                         <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                             <thead align=center>
                                                 <tr>
-                                                    <th>ID Plot</th>
-                                                    <th>Provinsi</th>
-                                                    <th>Kabupaten</th>
-                                                    <th>NKS</th>
-                                                    <th>Ruta</th>
-                                                    <th>Status</th>
-                                                    <th>Gambar</th>
+                                                <th>ID Plot</th>
+                                                <th>Provinsi</th>
+                                                <th>Kabupaten</th>
+                                                <th>NKS</th>
+                                                <th>Ruta</th>
+                                                <th>Status</th>
+                                                <th>Gambar</th>
                                                 </tr>
                                             </thead>
                                             <tbody align=center>
@@ -150,7 +147,6 @@
                                         </table>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>

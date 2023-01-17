@@ -114,39 +114,25 @@ class bps_controller extends Controller
     public function superPage()
     {
 		$user_creds = Auth::user();
-        if ($user_creds['id_role_fk'] == 2)
-        {
-            $user_name	= $user_creds['nama'];
+		if (!is_null($user_creds)){
+			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
-        } else
-        {
+		} else {
             return redirect('login') -> with('error', 'Anda belum login');
         }
-
         $dbSupervisor = DB::table('plotting')
-                        ->select('id_plot', 'id_petlap_fk', 'id_supervisor_fk', 'id_provinsi_fk', 'id_kabupaten_fk', 'kode_nks_fk', 'ruta', 'state')
-                        ->where('id_supervisor_fk', '=', $user_id)
-                        ->get();
-
-        $petlapNames = DB::table('users')
-                        ->join('plotting', 'plotting.id_petlap_fk', '=', 'users.id')
-                        ->select('users.id', 'users.nama')
-                        ->where('plotting.id_supervisor_fk', '=', $user_id)
-                        ->groupBy('users.id', 'users.nama')
-                        ->get();
-
-        return view('supervisor', compact('user_name','dbSupervisor', 'petlapNames'));
+        ->select('id_plot', 'id_petlap_fk', 'id_provinsi_fk', 'id_kabupaten_fk', 'kode_nks_fk', 'ruta', 'state')
+        ->get();
+        return view('supervisor', compact('user_name','dbSupervisor'));
     }
 
 	public function petlapPage()
     {
 		$user_creds = Auth::user();
-		if ($user_creds['id_role_fk'] == 1)
-        {
-            $user_name	= $user_creds['nama'];
+		if (!is_null($user_creds)){
+			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
-        } else
-        {
+		} else {
             return redirect('login') -> with('error', 'Anda belum login');
         }
 
@@ -161,12 +147,11 @@ class bps_controller extends Controller
 	public function miminPage()
     {
 		$user_creds = Auth::user();
-		if ($user_creds['id_role_fk'] == 3)
-        {
-            $user_name	= $user_creds['nama'];
+		if (!is_null($user_creds)){
+			$user_name	= $user_creds['nama'];
 			$user_id	= $user_creds['id'];
-        } else
-        {
+            $user_role  = $user_creds['id_role_fk'];
+		} else {
             return redirect('login') -> with('error', 'Anda belum login');
         }
 
