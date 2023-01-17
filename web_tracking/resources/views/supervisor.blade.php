@@ -292,10 +292,11 @@
                 y.style.display = "none";
             }
 
-            console.log('Ahoy');
+            
             console.log('Petlap' + {{ $row -> id }});
         </script>
     @endforeach
+    {{ console.log(count($petlapNames)) }}
 
 </body>
 
