@@ -41,5 +41,9 @@ return new class extends Migration
 			$table->foreign('id_kabupaten_fk')->references('id_kabupaten')->on('kabupaten');
 			$table->foreign('kode_nks_fk')->references('kode_nks')->on('nks');
         });
+
+        Schema::table('photos', function (Blueprint $table) {
+            $table->foreign('id_plot_fk')->references('id_plot')->on('plotting');
+        });
     }
 };
