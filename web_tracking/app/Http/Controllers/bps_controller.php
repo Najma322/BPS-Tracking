@@ -134,8 +134,11 @@ class bps_controller extends Controller
                         ->where('plotting.id_supervisor_fk', '=', $user_id)
                         ->groupBy('users.id', 'users.nama')
                         ->get();
+        $photos = DB::table('photos')
+        ->select('*')
+        ->get();
 
-        return view('supervisor', compact('user_name','dbSupervisor', 'petlapNames'));
+        return view('supervisor', compact('user_name','dbSupervisor', 'petlapNames', 'photos'));
     }
 
 	public function petlapPage()
@@ -222,7 +225,7 @@ class bps_controller extends Controller
         {
             $validatedData = $request->validate([
              'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-             'id_plot' => 'required'
+             'id_plot_img' => 'required'
      
             ]);
      
@@ -235,7 +238,7 @@ class bps_controller extends Controller
      
             $save->name = $name;
             $save->path = $path;
-            $save->id_plot_fk = $request -> id_plot;
+            $save->id_plot_fk = $request -> id_plot_img;
      
             $save->save();
      

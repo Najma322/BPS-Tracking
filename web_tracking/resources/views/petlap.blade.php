@@ -106,7 +106,6 @@
                                             </thead>
                                             <tbody align=center>
                                                 @foreach($dbPlotting as $row)
-                                                
                                                     <tr>
                                                         <td>
                                                             <p style="font-size: 13pt;">{{ $row -> id_plot }}</p>
@@ -125,11 +124,11 @@
                                                         </td>
                                                         <td>
                                                             <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white">
+                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $row -> id_plot }}" style="color:white">
                                                                 Upload Gambar
                                                             </button>
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal fade" id="exampleModal{{ $row -> id_plot }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
@@ -137,17 +136,17 @@
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            @if ($message = Session::get('success'))
+                                                                            <!-- @if ($message = Session::get('status'))
                                                                             <div class="alert alert-success alert-block">
                                                                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                                                                 <strong>{{ $message }}</strong>
-                                                                            </div>
-                                                                            <img src="images/{{ Session::get('image') }}">
-                                                                            @endif
+                                                                            </div> -->
+                                                                            <!-- <img src="images/{{ Session::get('image') }}"> -->
+                                                                            <!-- @endif -->
 
                                                                             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
                                                                                 {{ csrf_field() }}
-                                                                                <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
+                                                                                <input type="hidden" name="id_plot_img" value="{{ $row -> id_plot }}">
                                                                                 <div class="mb-3">
                                                                                     <label class="form-label" for="inputImage">Image:</label>
                                                                                     <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
