@@ -9,6 +9,6 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','path'];
+    protected $fillable = ['name','path', 'id_plot_fk'];
 	protected $table = 'photos';
 }
