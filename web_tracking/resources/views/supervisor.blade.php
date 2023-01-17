@@ -142,7 +142,18 @@
                                                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                                                         </svg>
                                                         View</button>
-                                                        </select>
+                                                        <!-- View Image -->
+                                                        <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                                                                <!-- error message untuk title -->
+                                                                @error('image')
+                                                                    <div class="alert alert-danger mt-2">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </input>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

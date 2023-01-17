@@ -23,6 +23,7 @@ return new class extends Migration
 			$table->string('kode_nks_fk');
 			$table->smallInteger('ruta');
 			$table->smallInteger('state')->default(0);
+			$table->timestamps();
         });
     }
 

@@ -239,7 +239,7 @@ class bps_controller extends Controller
      
             $save->save();
      
-          return redirect('petlap')->with('status', 'Image Has been uploaded')->with('image',$name);
+          return redirect('petlap')->with('status', 'Gambar telah berhasil terupload!')->with('image',$name);
     }
     // ============================================================================================= EMPLOYEES PAGE
 

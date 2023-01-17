@@ -83,6 +83,13 @@
                                         <strong>{!! \Session::get('successUpdate') !!}</strong>
                                     </div>
                                     @endif
+                                    <!-- Allert Image -->
+                                    @if (\Session::has('status'))
+                                    <div class="alert alert-success">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                        <strong>{!! \Session::get('status') !!}</strong>
+                                    </div>
+                                    @endif
                                     <div style="overflow-x:auto;">
                                         <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                             <thead align=center>
@@ -118,11 +125,9 @@
                                                         </td>
                                                         <td>
                                                             <!-- Button trigger modal -->
-
                                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white">
                                                                 Upload Gambar
                                                             </button>
-
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
