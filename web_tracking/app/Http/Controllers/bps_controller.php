@@ -217,18 +217,12 @@ class bps_controller extends Controller
 
         return redirect('petlap') -> with('successUpdate', 'Status plot telah di-update!');
     }
-    // ============================================================================================= EMPLOYEES PAGE
 
-    // ============================================================================================= VIEW ALYA
-    /* public function petlap()
-    {
-		return view('petlap');
-    } */
-     
-        public function storeIMG(Request $request)
+    public function storeIMG(Request $request)
         {
             $validatedData = $request->validate([
              'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+             'id_plot' => 'required'
      
             ]);
      
@@ -241,11 +235,21 @@ class bps_controller extends Controller
      
             $save->name = $name;
             $save->path = $path;
+            $save->id_plot_fk = $request -> id_plot;
      
             $save->save();
      
           return redirect('petlap')->with('status', 'Image Has been uploaded')->with('image',$name);
     }
+    // ============================================================================================= EMPLOYEES PAGE
+
+    // ============================================================================================= VIEW ALYA
+    /* public function petlap()
+    {
+		return view('petlap');
+    } */
+     
+        
     
 }
 

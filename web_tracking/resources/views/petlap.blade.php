@@ -142,6 +142,7 @@
 
                                                                             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
                                                                                 {{ csrf_field() }}
+                                                                                <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
                                                                                 <div class="mb-3">
                                                                                     <label class="form-label" for="inputImage">Image:</label>
                                                                                     <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
