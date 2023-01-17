@@ -84,7 +84,7 @@
                             <br>
                             <div class="card info-card customers-card">
                                 @foreach($petlapNames as $motherRow)
-                                <div class="card-body" id="petlapForm{{ $motherRow -> id }}">
+                                <div class="card-body" id="petlapForm{{ $motherRow -> id }}" style="display: none;">
                                     <!-- ========================= Isi Card ========================= -->
                                     <center>
                                     <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
@@ -113,6 +113,7 @@
                                             </thead>
                                             <tbody align=center>
                                             @foreach($dbSupervisor as $row)
+                                                @if($motherRow -> id == $row -> id_petlap_fk)
                                                 <tr>
                                                     <td>
                                                         <p style="font-size: 13pt;">{{ $row -> id_plot }}</p></td>
@@ -156,6 +157,7 @@
                                                         </form>
                                                     </td>
                                                 </tr>
+                                                @endif
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -299,13 +301,18 @@
             @foreach($petlapNames as $row)
             if (petugas == 'x{{ $row -> id }}')
             {
-                console.log('found {{ $row -> id }}');
-                var show = document.getElementById();
+                var show = document.getElementById('petlapForm{{ $row -> id }}');
+                
+                show.style.display = 'block';
+            }
+
+            if (petugas != 'x{{ $row -> id }}')
+            {
+                var hide = document.getElementById('petlapForm{{ $row -> id }}')
+
+                hide.style.display = 'none';
             }
             @endforeach
-            // var x = document.getElementById();
-
-            // x.style.display = "none";
         }
     </script>
 
