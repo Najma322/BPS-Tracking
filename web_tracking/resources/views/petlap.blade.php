@@ -67,7 +67,7 @@
 
         <div class="container">
             <div class="row">
-            <div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="row">
                         <!-- First Card -->
                         <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
@@ -75,36 +75,91 @@
                                 <div class="card-body">
                                     <!-- ========================= Isi Card ========================= -->
                                     <center>
-                                    <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
+                                        <p class="fst-italic" style='font-size:30px;color: #1C256A;'><b>Form Survei SAKERNAS 2023</b></p>
                                     </center>
+                                    <br> @if (\Session::has('successUpdate'))
+                                    <div class="alert alert-success">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                        <strong>{!! \Session::get('successUpdate') !!}</strong>
+                                    </div>
+                                    @endif
                                     <div style="overflow-x:auto;">
                                         <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
-                                            <thead>
+                                            <thead align=center>
                                                 <tr>
-                                                <th>ID Plotting</th>
-                                                <th>Provinsi</th>
-                                                <th>Kabupaten</th>
-                                                <th>NKS</th>
-                                                <th>Ruta</th>
-                                                <th>Gambar</th>
-                                                <th>Status</th>
-                                                <th>Update</th>
+                                                    <th>ID Plotting</th>
+                                                    <th>Provinsi</th>
+                                                    <th>Kabupaten</th>
+                                                    <th>NKS</th>
+                                                    <th>Ruta</th>
+                                                    <th>Gambar</th>
+                                                    <th>Status</th>
+                                                    <th>Update</th>
                                                 </tr>
                                             </thead>
-                                            <tbody >
+                                            <tbody align=center>
                                                 @foreach($dbPlotting as $row)
                                                 <form method="post" action="{{ route('update.plotting') }}">
-                                                {{ csrf_field() }}
+                                                    {{ csrf_field() }}
                                                     <tr>
                                                         <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
-                                                        <td><p style="font-size: 13pt;">{{ $row -> id_plot }}</p></td>
-                                                        <td><p style="font-size: 13pt;">{{ $row -> id_provinsi_fk }}</p></td>
-                                                        <td><p style="font-size: 13pt;">{{ $row -> id_kabupaten_fk }}</p></td>
-                                                        <td><p style="font-size: 13pt;">{{ $row -> kode_nks_fk }}</p></td>
-                                                        <td><p style="font-size: 13pt;">{{ $row -> ruta }}</p></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-warning" style="color: white;">Upload</button>
-                                                            <button type="button" class="btn btn-info" style="color: white;">Foto</button>
+                                                            <p style="font-size: 13pt;">{{ $row -> id_plot }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p style="font-size: 13pt;">{{ $row -> id_provinsi_fk }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p style="font-size: 13pt;">{{ $row -> id_kabupaten_fk }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p style="font-size: 13pt;">{{ $row -> kode_nks_fk }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p style="font-size: 13pt;">{{ $row -> ruta }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <!-- Button trigger modal -->
+
+                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white">
+                                                                Upload Gambar
+                                                            </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Upload Gambar</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            @if ($message = Session::get('success'))
+                                                                            <div class="alert alert-success alert-block">
+                                                                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </div>
+                                                                            <img src="images/{{ Session::get('image') }}"> @endif
+
+                                                                            <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
+                                                                                @csrf
+
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label" for="inputImage">Image:</label>
+                                                                                    <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror"> @error('image')
+                                                                                    <span class="text-danger">{{ $message }}</span> @enderror
+                                                                                </div>
+
+                                                                                <div class="mb-3">
+                                                                                    <button type="submit" class="btn" style="color: white; background-color: #3498db;">Upload</button>
+                                                                                </div>
+
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn" style='background-color: seagreen; color:white'>Ambil Gambar</button>
                                                         </td>
                                                         <td>
                                                             <select name="status" id="status" style="font-size: 13pt;" value>

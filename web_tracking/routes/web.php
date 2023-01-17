@@ -28,6 +28,7 @@ Route::get('signout', [bps_controller::class, 'signOut']);
 Route::get('dashboard', [bps_controller::class, 'dashboard']);
 Route::post('storePlotting', [bps_controller::class, 'createPlotting'])->name('store.plotting');
 Route::post('updatePlotting', [bps_controller::class, 'updatePlotting'])->name('update.plotting');
+Route::post('image-upload', [ ImageController::class, 'store' ])->name('image.store');
 
 // Employees Page
 Route::get('supervisor', [bps_controller::class, 'superPage']);

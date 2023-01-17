@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\bps_plotting_model;
+use App\Models\Image;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 use Session;
 
 class bps_controller extends Controller
@@ -213,8 +215,43 @@ class bps_controller extends Controller
         bps_plotting_model::where('id_plot', $request -> id_plot)
                             ->update(['state' => $request -> status]);
 
-        return redirect('petlap') -> with('success', 'Status plot telah di-update');
+        return redirect('petlap') -> with('successUpdate', 'Status plot telah di-update!');
     }
     // ============================================================================================= EMPLOYEES PAGE
+
+    // ============================================================================================= VIEW ALYA
+    /* public function petlap()
+    {
+		return view('petlap');
+    } */
+   
+        public function index()
+        {
+            return view('image');
+        }
+     
+        public function store(Request $request)
+        {
+             
+            $validatedData = $request->validate([
+             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+     
+            ]);
+     
+            $name = $request->file('image')->getClientOriginalName();
+     
+            $path = $request->file('image')->store('public/bps_resources/upload');
+     
+     
+            $save = new Image;
+     
+            $save->name = $name;
+            $save->path = $path;
+     
+            $save->save();
+     
+          return redirect('image-upload')->with('status', 'Image Has been uploaded')->with('image',$name);
+    }
+    
 }
 
