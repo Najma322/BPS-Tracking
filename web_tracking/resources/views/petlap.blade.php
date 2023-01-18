@@ -109,7 +109,7 @@
                                                     <th>Ruta</th>
                                                     <th>Gambar</th>
                                                     <th>Status</th>
-                                                    <th>Update</th>
+                                                    <th>Update Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody align=center>

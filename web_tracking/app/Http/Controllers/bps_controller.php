@@ -237,24 +237,29 @@ class bps_controller extends Controller
 
             if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
             {
-                return redirect('petlap') -> with('errorExist', 'Gambar plot sudah ada!');
+                // return redirect('petlap') -> with('errorExist', 'Gambar plot sudah ada!');
+                $name = 'photo' . $request->id_plot_img . '.jpg';
+                $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
+
+                Image::where('id_plot_fk', $request -> id_plot_img)
+                        ->update(['name' => $name], ['path' => $path]);
+
+                return redirect('petlap')->with('status', 'Gambar telah ter-update');
             }
 
             $name = 'photo' . $request->id_plot_img . '.jpg';
 
-            // $path = $request->file('image')->store('public/image_upload');
             $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
 
 
             $save = new Image;
-
             $save->name = $name;
             $save->path = $path;
             $save->id_plot_fk = $request -> id_plot_img;
 
             $save->save();
 
-          return redirect('petlap')->with('status', 'Gambar telah ter-upload')->with('image',$name);
+          return redirect('petlap')->with('status', 'Gambar telah ter-upload');
     }
 
     public function deleteData(Request $request)
