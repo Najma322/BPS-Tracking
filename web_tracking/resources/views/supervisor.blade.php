@@ -160,7 +160,7 @@
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                <button type="button"  class="btn btn-primary" style="color:white" href="{{ asset('storage/imejis/'.$photo -> name) }}" download>Download</button>
+                                                                                <button type="button"  class="btn btn-primary" style="color:white"><a href="{{ asset('storage/imejis/'.$photo -> name) }}" download style="color:white;">Download</a></button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
