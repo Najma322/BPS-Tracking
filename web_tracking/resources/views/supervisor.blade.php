@@ -159,18 +159,18 @@
 
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="staticBackdrop{{ $row -> id_plot }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog">
+                                                                    <div class="modal-dialog" style="position: relative;">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title" id="staticBackdropLabel">Image Preview</h5>
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                {{ $photo-> name }}<img src="{{ asset('storage/imejis/'.$photo -> name) }}">
+                                                                            <img class="img-fluid" src="{{ asset('storage/imejis/'.$photo -> name) }}">
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                <button type="button" class="btn btn-primary">Saves</button>
+                                                                                <button type="button"  class="btn btn-primary" style="color:white" href="{{ asset('storage/imejis/'.$photo -> name) }}" download>Download</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
