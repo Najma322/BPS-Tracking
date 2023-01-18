@@ -29,7 +29,7 @@ Route::get('dashboard', [bps_controller::class, 'dashboard']);
 Route::post('storePlotting', [bps_controller::class, 'createPlotting'])->name('store.plotting');
 Route::post('updatePlotting', [bps_controller::class, 'updatePlotting'])->name('update.plotting');
 Route::post('image-upload', [bps_controller::class, 'storeIMG'])->name('image.store');
-// Route::post('image-view', [bps_controller::class, 'storeIMG'])->name('image.store');
+Route::post('deleteData', [bps_controller::class, 'deleteData'])->name('delete.data');
 
 // Employees Page
 Route::get('supervisor', [bps_controller::class, 'superPage']);

@@ -75,7 +75,8 @@
                     <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
                         <div class="card info-card customers-card">
                             <div class="card-body">
-                                <br> @if (\Session::has('successPlot'))
+                                <br>
+                                @if (\Session::has('successPlot'))
                                 <div class="alert alert-success">
                                     <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
                                     <strong>{!! \Session::get('successPlot') !!}</strong>
@@ -135,7 +136,7 @@
     <!-- End Form section -->
 
     <!-- ======= PLOTTING ====== -->
-    <div class="container" id="cardPlot">
+    <div class="container" id="cardPlotting">
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
@@ -143,6 +144,12 @@
                     <div class="col-lg-12 col-md-12" style='padding-top:65px;'>
                         <div class="card info-card customers-card">
                             <div class="card-body">
+                                @if (\Session::has('successDelete'))
+                                <div class="alert alert-success">
+                                    <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                    <strong>{!! \Session::get('successDelete') !!}</strong>
+                                </div>
+                                @endif
                                 <div style="overflow-x:auto;">
                                     <table class="table display-center" id="example" style='font-size:20px;position:center;'>
                                         <thead align=center>
@@ -155,6 +162,7 @@
                                                 <th>NKS</th>
                                                 <th>Ruta</th>
                                                 <th>Status</th>
+                                                <th>Hapus</th>
                                             </tr>
                                         </thead>
                                         <tbody align=center>
@@ -193,6 +201,13 @@
                                                         <button type="button" class="btn btn-secondary">0. Belum Selesai</button>
                                                         @endif
                                                     </td>
+                                                    <form action="{{ route('delete.data') }}" method="post">
+                                                        {{ csrf_field() }}
+                                                        <td>
+                                                            <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
+                                                            <input type="submit" class="btn btn-danger" value="Hapus">
+                                                        </td>
+                                                    </form>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -506,30 +521,36 @@
             var x = document.getElementById('cardPlot');
             var y = document.getElementById('cardMonitor');
             var z = document.getElementById('cardRegister');
+            var zz = document.getElementById('cardPlotting');
 
-            x.style.display = 'block';
-            y.style.display = 'none';
-            z.style.display = 'none';
+            $(x).fadeIn('medium');
+            $(y).fadeOut('medium');
+            $(z).fadeOut('medium');
+            $(zz).fadeIn('medium');
         }
 
         function showMonitor() {
             var x = document.getElementById('cardPlot');
             var y = document.getElementById('cardMonitor');
             var z = document.getElementById('cardRegister');
+            var zz = document.getElementById('cardPlotting');
 
-            x.style.display = 'none';
-            y.style.display = 'block';
-            z.style.display = 'none';
+            $(x).fadeOut('medium');
+            $(y).fadeIn('medium');
+            $(z).fadeOut('medium');
+            $(zz).fadeOut('medium');
         }
 
         function showRegister() {
             var x = document.getElementById('cardPlot');
             var y = document.getElementById('cardMonitor');
             var z = document.getElementById('cardRegister');
+            var zz = document.getElementById('cardPlotting');
 
-            x.style.display = 'none';
-            y.style.display = 'none';
-            z.style.display = 'block';
+            $(x).fadeOut('fast');
+            $(y).fadeOut('fast');
+            $(z).fadeIn('medium');
+            $(zz).fadeOut('fast');
         }
     </script>
     <script>

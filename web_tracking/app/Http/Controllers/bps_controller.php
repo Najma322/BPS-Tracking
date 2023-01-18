@@ -226,11 +226,11 @@ class bps_controller extends Controller
     }
 
     public function storeIMG(Request $request)
-        {
+    {
             $validatedData = $request->validate([
              'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
              'id_plot_img' => 'required'
-     
+
             ]);
 
             $name = $request->file('image')->getClientOriginalName();
@@ -243,10 +243,22 @@ class bps_controller extends Controller
             $save->name = $name;
             $save->path = $path;
             $save->id_plot_fk = $request -> id_plot;
-     
+
             $save->save();
 
           return redirect('petlap')->with('status', 'Gambar telah berhasil terupload!')->with('image',$name);
+    }
+
+    public function deleteData(Request $request)
+    {
+        $validatedData = $request->validate
+        ([
+             'id_plot' => 'required'
+        ]);
+
+        DB::delete('DELETE FROM plotting WHERE id_plot = ?', [$request -> id_plot]);
+
+        return redirect('admin') -> with('successDelete', 'Plotting telah berhasil dihapus');
     }
     // ============================================================================================= EMPLOYEES PAGE
 
