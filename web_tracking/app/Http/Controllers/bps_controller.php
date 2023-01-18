@@ -10,6 +10,8 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 use Session;
 
@@ -228,24 +230,25 @@ class bps_controller extends Controller
     public function storeIMG(Request $request)
     {
             $validatedData = $request->validate([
-             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+             'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
              'id_plot_img' => 'required'
 
             ]);
 
-            $name = $request->file('image')->getClientOriginalName();
+            $name = 'photo' . $request->id_plot_img . 'jpg';
 
-            $path = $request->file('image')->store('public/image_upload');
+            // $path = $request->file('image')->store('public/image_upload');
+            $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
 
 
             $save = new Image;
 
             $save->name = $name;
             $save->path = $path;
-            $save->id_plot_fk = $request -> id_plot;
+            $save->id_plot_fk = $request -> id_plot_img;
 
             $save->save();
-     
+
           return redirect('petlap')->with('status', 'Gambar telah ter-upload')->with('image',$name);
     }
 
