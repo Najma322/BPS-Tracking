@@ -90,6 +90,14 @@
                                         <strong>{!! \Session::get('status') !!}</strong>
                                     </div>
                                     @endif
+
+                                    @if (\Session::has('errorExist'))
+                                    <div class="alert alert-danger">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                        <strong>{!! \Session::get('errorExist') !!}</strong>
+                                    </div>
+                                    @endif
+
                                     <div style="overflow-x:auto;">
                                         <table class="table display-center" id="forPetlap" style='font-size:20px;position:center;'>
                                             <thead align=center>

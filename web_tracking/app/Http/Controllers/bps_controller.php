@@ -235,6 +235,11 @@ class bps_controller extends Controller
 
             ]);
 
+            if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
+            {
+                return redirect('petlap') -> with('errorExist', 'Gambar plot sudah ada!');
+            }
+
             $name = 'photo' . $request->id_plot_img . '.jpg';
 
             // $path = $request->file('image')->store('public/image_upload');
