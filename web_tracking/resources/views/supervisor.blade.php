@@ -146,7 +146,6 @@
                                                                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                                                                 </svg>
                                                                 View</button>
-                                                                {{ asset('storage/'.$photo -> path) }}
 
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="staticBackdrop{{ $row -> id_plot }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -157,7 +156,7 @@
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                {{ $photo-> name }}<img src="{{ asset('storage/'.$photo -> path) }}">
+                                                                                {{ $photo-> name }}<img src="{{ asset('storage/imejis/'.$photo -> name) }}">
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
