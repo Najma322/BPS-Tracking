@@ -235,7 +235,7 @@ class bps_controller extends Controller
 
             $name = $request->file('image')->getClientOriginalName();
 
-            $path = $request->file('image')->store('public/image_upload');
+            $path = $request->file('image')->store('public/');
 
 
             $save = new Image;
