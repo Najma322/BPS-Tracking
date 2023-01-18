@@ -268,6 +268,18 @@ class bps_controller extends Controller
 
         return redirect('admin') -> with('successDelete', 'Plotting telah berhasil dihapus');
     }
+
+    public function deleteImage(Request $request)
+    {
+        $validatedData = $request->validate
+        ([
+             'id_plot' => 'required'
+        ]);
+
+        DB::delete('DELETE FROM photos WHERE id_plot_fk = ?', [$request -> id_plot]);
+
+        return redirect('supervisor') -> with('successDelete', 'Gambar telah berhasil dihapus');
+    }
     // ============================================================================================= EMPLOYEES PAGE
 
     // ============================================================================================= VIEW ALYA

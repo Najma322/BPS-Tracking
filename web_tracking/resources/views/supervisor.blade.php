@@ -109,7 +109,7 @@
                                     @endif
                                     
                                     <div style="overflow-x:auto;">
-                                        <table class="table display-center" id="example" style='font-size:20px;position:center;'>
+                                        <table class="table display-center" id="example{{ $motherRow -> id }}" style='font-size:20px;position:center;'>
                                             <thead align=center>
                                                 <tr>
                                                     <th>ID Plot</th>
@@ -170,6 +170,11 @@
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                <form action="{{ route('delete.image') }}" method="post">
+                                                                                    {{ csrf_field() }}
+                                                                                    <input type="hidden" value="{{ $photo -> id_plot_fk }}">
+                                                                                    <input type="submit" class="btn btn-danger" value="Ha">
+                                                                                </form>
                                                                                 <button type="button"  class="btn btn-primary" style="color:white" href="{{ asset('storage/imejis/'.$photo -> name) }}" download>Download</button>
                                                                             </div>
                                                                         </div>
@@ -327,7 +332,7 @@
             {
                 var show = document.getElementById('petlapForm{{ $row -> id }}');
                 
-                $(show).fadeIn('medium');
+                $(show).fadeIn('fast');
                 // show.style.display = 'block';
             }
 
@@ -335,7 +340,7 @@
             {
                 var hide = document.getElementById('petlapForm{{ $row -> id }}')
 
-                $(hide).fadeOut('medium');
+                $(hide).fadeOut('fast');
                 // hide.style.display = 'none';
             }
             @endforeach
@@ -343,15 +348,25 @@
     </script>
 
     <!-- DataTables -->
+    @foreach($petlapNames as $motherRow)
     <script>
         $(document).ready(function () {
         // Setup - add a text input to each footer cell
-        $('#example thead tr')
+        var first = '#example';
+        var second = {{ $motherRow -> id }};
+        var trans = first.concat('', second);
+        // var third = 'thead tr';
+        // var concat = trans.concat(' ', third);
+        // var appendTarget = trans.concat(' thead');
+        // console.log(appendTarget);
+
+        $(trans.concat(' ', 'thead tr'))
             .clone(true)
-            .addClass('filters')
-            .appendTo('#example thead');
+            .addClass('filters'.concat(second))
+            .appendTo(trans.concat(' ', 'thead'));
     
-        var table = $('#example').DataTable({
+        var table = $(trans).DataTable
+        ({
             orderCellsTop: true,
             fixedHeader: true,
             initComplete: function () {
@@ -363,7 +378,7 @@
                     .eq(0)
                     .each(function (colIdx) {
                         // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
+                        var cell = $('.filters'.concat(second).concat(' ', 'th')).eq(
                             $(api.column(colIdx).header()).index()
                         );
                         var title = $(cell).text();
@@ -372,7 +387,7 @@
                         // On every keypress in this input
                         $(
                             'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                            $('.filters'.concat(second).concat(' ', 'th')).eq($(api.column(colIdx).header()).index())
                         )
                             .off('keyup change')
                             .on('change', function (e) {
@@ -406,6 +421,8 @@
         });
     });
     </script>
+    @endforeach
+    
 </body>
 
 </html>
