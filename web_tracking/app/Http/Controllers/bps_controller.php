@@ -177,7 +177,11 @@ class bps_controller extends Controller
                     ->select('id', 'nama', 'username', 'email', 'id_role_fk')
                     ->get();
 
-        return view('admin', compact('user_name', 'dbUsers'));
+        $dbPlot = DB::table('plotting')
+                    ->select('*')
+                    ->get();
+
+        return view('admin', compact('user_name', 'dbUsers', 'dbPlot'));
     }
 
     public function createPlotting(Request $request)
@@ -228,17 +232,17 @@ class bps_controller extends Controller
              'id_plot_img' => 'required'
      
             ]);
-     
+
             $name = $request->file('image')->getClientOriginalName();
-     
+
             $path = $request->file('image')->store('public/image_upload');
-     
-     
+
+
             $save = new Image;
-     
+
             $save->name = $name;
             $save->path = $path;
-            $save->id_plot_fk = $request -> id_plot_img;
+            $save->id_plot_fk = $request -> id_plot;
      
             $save->save();
      
@@ -251,8 +255,8 @@ class bps_controller extends Controller
     {
 		return view('petlap');
     } */
-     
-        
-    
+
+
+
 }
 
