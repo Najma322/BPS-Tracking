@@ -235,7 +235,7 @@ class bps_controller extends Controller
 
             ]);
 
-            $name = 'photo' . $request->id_plot_img . 'jpg';
+            $name = 'photo' . $request->id_plot_img . '.jpg';
 
             // $path = $request->file('image')->store('public/image_upload');
             $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
