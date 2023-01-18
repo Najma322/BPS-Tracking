@@ -245,8 +245,8 @@ class bps_controller extends Controller
             $save->id_plot_fk = $request -> id_plot;
 
             $save->save();
-
-          return redirect('petlap')->with('status', 'Gambar telah berhasil terupload!')->with('image',$name);
+     
+          return redirect('petlap')->with('status', 'Gambar telah ter-upload')->with('image',$name);
     }
 
     public function deleteData(Request $request)
