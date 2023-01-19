@@ -42,7 +42,7 @@
         <div class="container d-flex align-items-center justify-content-between">
             <div class="logo">
                 <img class="img-fluid" src="./bps_resources/img/BPS.jpg" alt="logo" style="width: 90px; height: 60px;" />
-                <a class="navbar-brand" href="index_manager.html" style="font-size: 25px;"><b>Badan Pusat Statistik</b></a>
+                <a class="navbar-brand" href="/index" style="font-size: 25px;"><b>Badan Pusat Statistik</b></a>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -62,7 +62,6 @@
                         </li>
                       </ul>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Log Out</a></li>
                 </ul>
                     <!-- <ul class="navbar-nav">
                       <li class="nav-item dropdown">
