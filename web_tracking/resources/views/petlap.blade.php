@@ -24,6 +24,9 @@
     <link href="./bps_resources/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="./bps_resources/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="./bps_resources/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Webcam -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="./bps_resources/css/style.css" rel="stylesheet">
@@ -184,14 +187,6 @@
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <!-- @if ($message = Session::get('status'))
-                                                                            <div class="alert alert-success alert-block">
-                                                                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </div> -->
-                                                                            <!-- <img src="images/{{ Session::get('image') }}"> -->
-                                                                            <!-- @endif -->
-
                                                                             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
                                                                                 {{ csrf_field() }}
                                                                                 <input type="hidden" name="id_plot_img" value="{{ $row -> id_plot }}">
@@ -378,7 +373,7 @@
 
     <!-- Template Main JS File -->
     <script src="./bps_resources/js/main.js"></script>
-
+    
     <!-- Webcam -->
     <script language="JavaScript">
         function attachCam(plot_index)

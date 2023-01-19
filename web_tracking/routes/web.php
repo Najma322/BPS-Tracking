@@ -38,3 +38,6 @@ Route::get('supervisor', [bps_controller::class, 'superPage']);
 Route::get('petlap', [bps_controller::class, 'petlapPage']);
 Route::get('admin', [bps_controller::class, 'miminPage']);
 
+// Landing Page
+Route::get('index', [bps_controller::class, 'landPage']);
+

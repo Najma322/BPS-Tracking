@@ -312,5 +312,19 @@ class bps_controller extends Controller
         return redirect('petlap')->with('status', 'Gambar telah ter-upload');
     }
     // ============================================================================================= EMPLOYEES PAGE
+
+    // ============================================================================================= VIEW ALYA
+    /* public function petlap()
+    {
+		return view('petlap');
+    } */
+
+    // Landing Page
+    public function landPage()
+    {
+		return view('landPage');
+    }
+
+
 }
 
