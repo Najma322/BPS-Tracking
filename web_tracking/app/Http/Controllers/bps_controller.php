@@ -230,27 +230,21 @@ class bps_controller extends Controller
     public function storeIMG(Request $request)
     {
             $validatedData = $request->validate([
-             'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+             'image' => 'required|image|mimes:jpg,png,jpeg|max:8192',
              'id_plot_img' => 'required'
 
             ]);
 
+            $name = 'photo' . $request->id_plot_img . '.jpg';
+            $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
+
             if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
             {
-                // return redirect('petlap') -> with('errorExist', 'Gambar plot sudah ada!');
-                $name = 'photo' . $request->id_plot_img . '.jpg';
-                $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
-
                 Image::where('id_plot_fk', $request -> id_plot_img)
                         ->update(['name' => $name], ['path' => $path]);
 
                 return redirect('petlap')->with('status', 'Gambar telah ter-update');
             }
-
-            $name = 'photo' . $request->id_plot_img . '.jpg';
-
-            $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
-
 
             $save = new Image;
             $save->name = $name;
@@ -285,15 +279,38 @@ class bps_controller extends Controller
 
         return redirect('supervisor') -> with('successDelete', 'Gambar telah berhasil dihapus');
     }
-    // ============================================================================================= EMPLOYEES PAGE
 
-    // ============================================================================================= VIEW ALYA
-    /* public function petlap()
+    public function webcam(Request $request)
     {
-		return view('petlap');
-    } */
+        $validatedData = $request->validate
+        ([
+            'image'         => 'required',
+            'id_plot_img'   => 'required'
+        ]);
 
+        $img = $request->image;
+        $image_parts = explode(";base64,", $img);
+        $image_base64 = base64_decode($image_parts[1]);
+        $name = 'photo' . $request->id_plot_img . '.jpg';
+        $path = Storage::putFileAs('public/imejis', $img, $name);
 
+        if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
+            {
+                Image::where('id_plot_fk', $request -> id_plot_img)
+                        ->update(['name' => $name], ['path' => $path]);
 
+                return redirect('petlap')->with('status', 'Gambar telah ter-update');
+            }
+
+        $save = new Image;
+        $save->name = $name;
+        $save->path = $path;
+        $save->id_plot_fk = $request -> id_plot_img;
+
+        $save->save();
+
+        return redirect('petlap')->with('status', 'Gambar telah ter-upload');
+    }
+    // ============================================================================================= EMPLOYEES PAGE
 }
 
