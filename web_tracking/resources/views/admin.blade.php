@@ -40,7 +40,7 @@
   ======================================================== -->
 </head>
 
-<body>
+<body style="background-image: url({{ asset('./bps_resources/img/bg.jpg') }}); background-position:center;">
 
     <!-- ======= Header ======= -->
     <section>
@@ -54,6 +54,7 @@
                 </div>
                 <nav id="navbar" class="navbar">
                     <ul>
+                    <li><a class="nav-link scrollto active" href="/index">Home</a></li>
                         <li onclick="showPlot()"><a class="nav-link scrollto active" href="#">Plotting</a></li>
                         <li onclick="showMonitor()"><a class="nav-link scrollto" href="#">Monitor</a></li>
                         <li onclick="showRegister()"><a class="nav-link scrollto" href="#">Register</a></li>
