@@ -107,6 +107,13 @@
                                         <strong>{!! \Session::get('success') !!}</strong>
                                     </div>
                                     @endif
+
+                                    @if (\Session::has('successDelete'))
+                                    <div class="alert alert-warning">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+                                        <strong>{!! \Session::get('successDelete') !!}</strong>
+                                    </div>
+                                    @endif
                                     
                                     <div style="overflow-x:auto;">
                                         <table class="table display-center" id="example{{ $motherRow -> id }}" style='font-size:20px;position:center;'>
@@ -172,8 +179,8 @@
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                                                 <form action="{{ route('delete.image') }}" method="post">
                                                                                     {{ csrf_field() }}
-                                                                                    <input type="hidden" value="{{ $photo -> id_plot_fk }}">
-                                                                                    <input type="submit" class="btn btn-danger" value="Ha">
+                                                                                    <input type="hidden" name="id_plot" value="{{ $photo -> id_plot_fk }}">
+                                                                                    <input type="submit" class="btn btn-danger" value="Hapus">
                                                                                 </form>
                                                                                 <button type="button"  class="btn btn-primary" style="color:white" href="{{ asset('storage/imejis/'.$photo -> name) }}" download>Download</button>
                                                                             </div>
