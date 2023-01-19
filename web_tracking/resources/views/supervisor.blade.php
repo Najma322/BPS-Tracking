@@ -32,12 +32,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/fh-3.3.1/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/fh-3.3.1/datatables.min.js"></script>
 
-    <style type="text/css">
-        div.container
-        {
-        width: 80%;
-        }
-    </style>
     <!-- =======================================================
   * Template Name: Vesperr - v4.10.0
   * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
