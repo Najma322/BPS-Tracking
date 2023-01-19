@@ -125,7 +125,7 @@
                                             @foreach($dbSupervisor as $row)
                                                 @if($motherRow -> id == $row -> id_petlap_fk)
                                                 <tr>
-                                                    <td>
+                                                    <td align="center">
                                                         <p style="font-size: 13pt;">{{ $row -> id_plot }}</p></td>
                                                     <td>
                                                         <p style="font-size: 13pt;">{{ $row -> id_provinsi_fk }}</p></td>

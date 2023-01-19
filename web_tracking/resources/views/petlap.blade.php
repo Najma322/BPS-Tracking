@@ -24,6 +24,9 @@
     <link href="./bps_resources/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="./bps_resources/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="./bps_resources/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Webcam -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="./bps_resources/css/style.css" rel="stylesheet">
@@ -144,14 +147,6 @@
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <!-- @if ($message = Session::get('status'))
-                                                                            <div class="alert alert-success alert-block">
-                                                                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </div> -->
-                                                                            <!-- <img src="images/{{ Session::get('image') }}"> -->
-                                                                            <!-- @endif -->
-
                                                                             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
                                                                                 {{ csrf_field() }}
                                                                                 <input type="hidden" name="id_plot_img" value="{{ $row -> id_plot }}">
@@ -171,7 +166,60 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <button type="button" class="btn" style='background-color: seagreen; color:white'>Ambil Gambar</button>
+                                                            <!-- Take picture -->
+                                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $row -> id_plot }}" style="color:white">
+                                                                Ambil Gambar
+                                                            </button>
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Ambil Gambar</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form method="POST" action="{{ route('webcam.capture') }}">
+                                                                                {{ csrf_field() }}
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div id="my_camera"></div>
+                                                                                        <br/>
+                                                                                        <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                                                                                        <input type="hidden" name="image" class="image-tag">
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div id="results">Your captured image will appear here...</div>
+                                                                                    </div>
+                                                                                    <div class="col-md-12 text-center">
+                                                                                        <br/>
+                                                                                        <button class="btn btn-success">Submit</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <button type="button" class="btn" style='background-color: seagreen; color:white'>Ambil Gambar</button>
+                                                            <form method="POST" action="{{ route('webcam.capture') }}">
+                                                                @csrf
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div id="my_camera"></div>
+                                                                        <br/>
+                                                                        <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                                                                        <input type="hidden" name="image" class="image-tag">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div id="results">Your captured image will appear here...</div>
+                                                                    </div>
+                                                                    <div class="col-md-12 text-center">
+                                                                        <br/>
+                                                                        <button class="btn btn-success">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form> -->
                                                         </td>
                                                         <form method="post" action="{{ route('update.plotting') }}">
                                                             {{ csrf_field() }}
@@ -333,6 +381,23 @@
 
     <!-- Template Main JS File -->
     <script src="./bps_resources/js/main.js"></script>
+    <script language="JavaScript">
+        Webcam.set({
+            width: 490,
+            height: 350,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        
+        Webcam.attach( '#my_camera' );
+        
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                $(".image-tag").val(data_uri);
+                document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+            } );
+        }
+    </script>
 
 </body>
 

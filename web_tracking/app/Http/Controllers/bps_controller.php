@@ -268,6 +268,25 @@ class bps_controller extends Controller
 
         return redirect('admin') -> with('successDelete', 'Plotting telah berhasil dihapus');
     }
+
+    // For Webcam
+    public function store(Request $request)
+    {
+        $img = $request->image;
+        $folderPath = "public/imejis/";
+        
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid() . '.png';
+        
+        $file = $folderPath . $fileName;
+        Storage::put($file, $image_base64);
+        
+        dd('Image uploaded successfully: '.$fileName);
+    }
     // ============================================================================================= EMPLOYEES PAGE
 
     // ============================================================================================= VIEW ALYA
@@ -276,6 +295,11 @@ class bps_controller extends Controller
 		return view('petlap');
     } */
 
+    // Landing Page
+    public function landPage()
+    {
+		return view('landPage');
+    }
 
 
 }
