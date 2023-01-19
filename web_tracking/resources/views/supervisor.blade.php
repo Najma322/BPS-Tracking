@@ -182,7 +182,7 @@
                                                                                     <input type="hidden" name="id_plot" value="{{ $photo -> id_plot_fk }}">
                                                                                     <input type="submit" class="btn btn-danger" value="Hapus">
                                                                                 </form>
-                                                                                <button type="button"  class="btn btn-primary" style="color:white" href="{{ asset('storage/imejis/'.$photo -> name) }}" download>Download</button>
+                                                                                <button type="button"  class="btn btn-primary" style="color:white;" href="{{ asset('storage/imejis/'.$photo -> name) }}" download>Download</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
