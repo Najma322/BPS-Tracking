@@ -30,7 +30,8 @@ Route::post('storePlotting', [bps_controller::class, 'createPlotting'])->name('s
 Route::post('updatePlotting', [bps_controller::class, 'updatePlotting'])->name('update.plotting');
 Route::post('image-upload', [bps_controller::class, 'storeIMG'])->name('image.store');
 Route::post('deleteData', [bps_controller::class, 'deleteData'])->name('delete.data');
-Route::post('webcam', [bps_controller::class, 'store'])->name('webcam.capture');
+Route::post('deleteImage', [bps_controller::class, 'deleteImage'])->name('delete.image');
+Route::post('webcam', [bps_controller::class, 'webcam'])->name('take.image');
 
 // Employees Page
 Route::get('supervisor', [bps_controller::class, 'superPage']);

@@ -230,31 +230,30 @@ class bps_controller extends Controller
     public function storeIMG(Request $request)
     {
             $validatedData = $request->validate([
-             'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+             'image' => 'required|image|mimes:jpg,png,jpeg|max:8192',
              'id_plot_img' => 'required'
 
             ]);
 
-            if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
-            {
-                return redirect('petlap') -> with('errorExist', 'Gambar plot sudah ada!');
-            }
-
             $name = 'photo' . $request->id_plot_img . '.jpg';
-
-            // $path = $request->file('image')->store('public/image_upload');
             $path = Storage::putFileAs('public/imejis', $request->file('image'), $name);
 
+            if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
+            {
+                Image::where('id_plot_fk', $request -> id_plot_img)
+                        ->update(['name' => $name], ['path' => $path]);
+
+                return redirect('petlap')->with('status', 'Gambar telah ter-update');
+            }
 
             $save = new Image;
-
             $save->name = $name;
             $save->path = $path;
             $save->id_plot_fk = $request -> id_plot_img;
 
             $save->save();
 
-          return redirect('petlap')->with('status', 'Gambar telah ter-upload')->with('image',$name);
+          return redirect('petlap')->with('status', 'Gambar telah ter-upload');
     }
 
     public function deleteData(Request $request)
@@ -269,23 +268,48 @@ class bps_controller extends Controller
         return redirect('admin') -> with('successDelete', 'Plotting telah berhasil dihapus');
     }
 
-    // For Webcam
-    public function store(Request $request)
+    public function deleteImage(Request $request)
     {
+        $validatedData = $request->validate
+        ([
+             'id_plot' => 'required'
+        ]);
+
+        DB::delete('DELETE FROM photos WHERE id_plot_fk = ?', [$request -> id_plot]);
+
+        return redirect('supervisor') -> with('successDelete', 'Gambar telah berhasil dihapus');
+    }
+
+    public function webcam(Request $request)
+    {
+        $validatedData = $request->validate
+        ([
+            'image'         => 'required',
+            'id_plot_img'   => 'required'
+        ]);
+
         $img = $request->image;
-        $folderPath = "public/imejis/";
-        
         $image_parts = explode(";base64,", $img);
-        $image_type_aux = explode("image/", $image_parts[0]);
-        $image_type = $image_type_aux[1];
-        
         $image_base64 = base64_decode($image_parts[1]);
-        $fileName = uniqid() . '.png';
-        
-        $file = $folderPath . $fileName;
-        Storage::put($file, $image_base64);
-        
-        dd('Image uploaded successfully: '.$fileName);
+        $name = 'photo' . $request->id_plot_img . '.jpg';
+        $path = Storage::putFileAs('public/imejis', $img, $name);
+
+        if(Image::where('id_plot_fk', '=', $request -> id_plot_img) -> exists())
+            {
+                Image::where('id_plot_fk', $request -> id_plot_img)
+                        ->update(['name' => $name], ['path' => $path]);
+
+                return redirect('petlap')->with('status', 'Gambar telah ter-update');
+            }
+
+        $save = new Image;
+        $save->name = $name;
+        $save->path = $path;
+        $save->id_plot_fk = $request -> id_plot_img;
+
+        $save->save();
+
+        return redirect('petlap')->with('status', 'Gambar telah ter-upload');
     }
     // ============================================================================================= EMPLOYEES PAGE
 
