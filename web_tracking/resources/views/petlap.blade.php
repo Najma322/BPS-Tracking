@@ -123,6 +123,7 @@
                                             <tbody align=center>
 
                                                 <!-- Camera Modal -->
+
                                                 <div class="modal fade" id="webcamModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -156,7 +157,6 @@
                                                     </div>
                                                 </div>
                                                 <!-- END of camera modal -->
-
                                                 @foreach($dbPlotting as $row)
                                                     <tr>
                                                         <td>
@@ -175,7 +175,8 @@
                                                             <p style="font-size: 13pt;">{{ $row -> ruta }}</p>
                                                         </td>
                                                         <td>
-                                                            <!-- Button trigger modal -->
+                                                            <div class="col">
+                                                                <!-- Button trigger modal -->
                                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $row -> id_plot }}" style="color:white">
                                                                 Upload Gambar
                                                             </button>
@@ -207,37 +208,39 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
+                                                            </div>
+                                                            <!-- Button trigger modal -->
+                                                            <div class="col">
+                                                                <button type="button" onclick="attachCam({{ $row -> id_plot }})" class="btn" data-bs-toggle="modal" data-bs-target="#webcamModal" style='background-color: seagreen; color:white'>
+                                                                    Ambil Gambar
+                                                                </button>
+                                                            </td>
+                                                            <form method="post" action="{{ route('update.plotting') }}">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
+                                                                <td>
+                                                                    <select name="status" id="status" style="font-size: 13pt;" value>
+                                                                        @if($row -> state == 1)
+                                                                        <option selected hidden value="1" style="font-size: 12pt;">1. Berhasil</option>
+                                                                        @elseif($row -> state == 2)
+                                                                        <option selected hidden value="2" style="font-size: 12pt;">2. Menolak</option>
+                                                                        @elseif($row -> state == 3)
+                                                                        <option selected hidden value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                                                        @else
+                                                                        <option selected hidden value="0" style="font-size: 12pt;">0. Belum selesai</option>
+                                                                        @endif
+                                                                        <option value="1" style="font-size: 12pt;">1. Berhasil</option>
+                                                                        <option value="2" style="font-size: 12pt;">2. Menolak</option>
+                                                                        <option value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
+                                                                        <option value="0" style="font-size: 12pt;">0. Belum selesai</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="submit" value="Update" class="btn" name="submit" style="color: white; background-color: #3498db;">
+                                                                </td>
+                                                            </form>
+                                                        </div>
                                                             <!-- Button trigger CAMERA modal -->
-                                                            <button type="button" onclick="attachCam({{ $row -> id_plot }})" class="btn" data-bs-toggle="modal" data-bs-target="#webcamModal" style='background-color: seagreen; color:white'>
-                                                                Ambil Gambar
-                                                            </button>
-                                                            
-                                                        </td>
-                                                        <form method="post" action="{{ route('update.plotting') }}">
-                                                            {{ csrf_field() }}
-                                                            <input type="hidden" name="id_plot" value="{{ $row -> id_plot }}">
-                                                            <td>
-                                                                <select name="status" id="status" style="font-size: 13pt;" value>
-                                                                    @if($row -> state == 1)
-                                                                    <option selected hidden value="1" style="font-size: 12pt;">1. Berhasil</option>
-                                                                    @elseif($row -> state == 2)
-                                                                    <option selected hidden value="2" style="font-size: 12pt;">2. Menolak</option>
-                                                                    @elseif($row -> state == 3)
-                                                                    <option selected hidden value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
-                                                                    @else
-                                                                    <option selected hidden value="0" style="font-size: 12pt;">0. Belum selesai</option>
-                                                                    @endif
-                                                                    <option value="1" style="font-size: 12pt;">1. Berhasil</option>
-                                                                    <option value="2" style="font-size: 12pt;">2. Menolak</option>
-                                                                    <option value="3" style="font-size: 12pt;">3. Tidak dapat ditemui</option>
-                                                                    <option value="0" style="font-size: 12pt;">0. Belum selesai</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="submit" value="Update" class="btn" name="submit" style="color: white; background-color: #3498db;">
-                                                            </td>
-                                                        </form>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
