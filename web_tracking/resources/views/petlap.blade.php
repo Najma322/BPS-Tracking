@@ -134,20 +134,20 @@
                                                                 <form method="POST" action="{{ route('take.image') }}">
                                                                     {{ csrf_field() }}
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div id="my_camera"></div>
-                                                                            <br/>
-                                                                            <input type="button" value="Take Snapshot" onClick="take_snapshot()">
-                                                                            <input type="hidden" name="image" class="image-tag">
-                                                                            <input type="hidden" id="cameraPlot" name="id_plot_img" value="">
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div id="results">Your captured image will appear here...</div>
-                                                                        </div>
-                                                                        <div class="col-md-12 text-center">
-                                                                            <br/>
-                                                                            <!-- <button class="btn btn-success">Submit</button> -->
-                                                                            <input type="submit" class="btn btn-success">
+                                                                        <div class="container">
+                                                                            <div class="text-center">
+                                                                                <div id="my_camera"></div>
+                                                                                <br/>
+                                                                                <input type="button" value="Take Snapshot" onClick="take_snapshot()">
+                                                                                <input type="hidden" name="image" class="image-tag">
+                                                                                <input type="hidden" id="cameraPlot" name="id_plot_img" value="">
+                                                                            </div>
+                                                                            <div id="results" class="img-fluid"></div>
+                                                                            <div class="col-md-12 text-center">
+                                                                                <br/>
+                                                                                <!-- <button class="btn btn-success">Submit</button> -->
+                                                                                <input type="submit" class="btn btn-success">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -175,44 +175,48 @@
                                                             <p style="font-size: 13pt;">{{ $row -> ruta }}</p>
                                                         </td>
                                                         <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $row -> id_plot }}" style="color:white">
-                                                                Upload Gambar
-                                                            </button>
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal{{ $row -> id_plot }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Upload Gambar</h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
-                                                                                {{ csrf_field() }}
-                                                                                <input type="hidden" name="id_plot_img" value="{{ $row -> id_plot }}">
-                                                                                <div class="mb-3">
-                                                                                    <label class="form-label" for="inputImage">Image:</label>
-                                                                                    <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
-                                                                                    @error('image')
-                                                                                    <span class="text-danger">{{ $message }}</span>
-                                                                                    @enderror
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <!-- Button trigger modal -->
+                                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $row -> id_plot }}" style="color:white">
+                                                                        Upload Gambar
+                                                                    </button>
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="exampleModal{{ $row -> id_plot }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalLabel">Upload Gambar</h5>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                                 </div>
+                                                                                <div class="modal-body">
+                                                                                    <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
+                                                                                        {{ csrf_field() }}
+                                                                                        <input type="hidden" name="id_plot_img" value="{{ $row -> id_plot }}">
+                                                                                        <div class="mb-3">
+                                                                                            <label class="form-label" for="inputImage">Image:</label>
+                                                                                            <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
+                                                                                            @error('image')
+                                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                                            @enderror
+                                                                                        </div>
 
-                                                                                <div class="mb-3">
-                                                                                    <input type="submit" class="btn" style="color: white; background-color: #3498db;" />
+                                                                                        <div class="mb-3">
+                                                                                            <input type="submit" class="btn" style="color: white; background-color: #3498db;" />
+                                                                                        </div>
+                                                                                    </form>
                                                                                 </div>
-                                                                            </form>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col">
+                                                                    <!-- Button trigger CAMERA modal -->
+                                                                    <button type="button" onclick="attachCam({{ $row -> id_plot }})" class="btn" data-bs-toggle="modal" data-bs-target="#webcamModal" style='background-color: seagreen; color:white'>
+                                                                        Ambil Gambar
+                                                                    </button>
+                                                                </div>
                                                             </div>
-
-                                                            <!-- Button trigger CAMERA modal -->
-                                                            <button type="button" onclick="attachCam({{ $row -> id_plot }})" class="btn" data-bs-toggle="modal" data-bs-target="#webcamModal" style='background-color: seagreen; color:white'>
-                                                                Ambil Gambar
-                                                            </button>
-                                                            
                                                         </td>
                                                         <form method="post" action="{{ route('update.plotting') }}">
                                                             {{ csrf_field() }}
